@@ -16,6 +16,8 @@ services:
       PORT: 40000
     ports:
       - 40000:40000
+    networks:
+      - web
 
 # The commented out section below is an example of how to define a PostgreSQL
 # database that your application can use. `depends_on` tells Docker Compose to
@@ -50,3 +52,6 @@ services:
 #   db-password:
 #     file: db/password.txt
 
+networks:
+  web:
+    external: true
