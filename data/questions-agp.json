@@ -1,0 +1,437 @@
+[
+  {
+    "question": "Aimez-vous gérer des budgets et vous assurez que les ressources soient bien utilisées ?",
+    "answers": [
+      {
+        "answer": "Oui, j'aime planifier et bien gérer les ressources.",
+        "categories": [
+          "AGP"
+        ]
+      },
+      {
+        "answer": "Oui, mais je préfère que d'autres s'occupent des finances pendant que je me concentre sur la communication et des projets créatifs.",
+        "categories": [
+          "MIC"
+        ]
+      },
+      {
+        "answer": "Non, je préfère travailler sur le terrain dans des projets de mission.",
+        "categories": [
+          "RDDT"
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Etes-vous à l'aise pour coordonner des équipes afin de vous assurer que tout se passe bien ?",
+    "answers": [
+      {
+        "answer": "Oui, je me sens capable de diriger et motiver une équipe.",
+        "categories": [
+          "AGP"
+        ]
+      },
+      {
+        "answer": "Oui, mais je préfère diriger des équipes dans les technologies et les médias.",
+        "categories": [
+          "MIC"
+        ]
+      },
+      {
+        "answer": "Non, je préfère participer à des actions de bien-être et de soutien social.",
+        "categories": [
+          "SBE"
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Etes-vous passionné par la mise en place des process pour améliorer l'efficacité d’une organisation ?",
+    "answers": [
+      {
+        "answer": "Oui, j'aime créer des processus efficaces.",
+        "categories": [
+          "AGP"
+        ]
+      },
+      {
+        "answer": "Oui, mais je préfère m'adapter aux systèmes technologiques pour diffuser du contenu.",
+        "categories": [
+          "MIC"
+        ]
+      },
+      {
+        "answer": "Non, je préfère participer à des projets de mission et d'évangélisation.",
+        "categories": [
+          "RDDT"
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Comment réagissez-vous face à des imprévus ou des urgences dans la gestion des programmes ?",
+    "answers": [
+      {
+        "answer": "Je reste calme et je prends des décisions rapides pour résoudre les problèmes.",
+        "categories": [
+          "AGP"
+        ]
+      },
+      {
+        "answer": "Je consulte mon équipe avant de prendre des décisions, surtout pour des projets de communication.",
+        "categories": [
+          "MIC"
+        ]
+      },
+      {
+        "answer": "Les urgences me stressent, je préfère éviter ces situations et me concentrer sur le soutien pastoral.",
+        "categories": [
+          "SBE"
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Etes-vous à l'aise avec la gestion de documents officiels et l'organisation des dossiers",
+    "answers": [
+      {
+        "answer": "Oui, j'aime organiser et maintenir les documents en ordre.",
+        "categories": [
+          "AGP"
+        ]
+      },
+      {
+        "answer": "Oui, mais je préfère que ce soit automatisé et digitalisé pour plus d'efficacité.",
+        "categories": [
+          "MIC"
+        ]
+      },
+      {
+        "answer": "Non, je préfère me concentrer sur les relations externes et les missions.",
+        "categories": [
+          "RDDT"
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Aimez-vous planifier et mener des projets administratifs sur le long terme ?",
+    "answers": [
+      {
+        "answer": "Oui, j'aime voir les projets se dérouler sur la durée.",
+        "categories": [
+          "AGP"
+        ]
+      },
+      {
+        "answer": "Non, je préfère travailler sur des projets de communication créative à court terme.",
+        "categories": [
+          "MIC"
+        ]
+      },
+      {
+        "answer": "Non, je préfère participer à des missions de courte durée.",
+        "categories": [
+          "RDDT"
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Etes-vous motivé à superviser des équipes pour atteindre les objectifs de l'Église ?",
+    "answers": [
+      {
+        "answer": "Oui, je suis motivé à atteindredes aobjectifs en équipe.",
+        "categories": [
+          "AGP"
+        ]
+      },
+      {
+        "answer": "Oui, mais je préfère superviser des équipes techniques pour des projets de médias.",
+        "categories": [
+          "MIC"
+        ]
+      },
+      {
+        "answer": "Non, je préfère participer activement sans diriger, surtout dans les missions sociales.",
+        "categories": [
+          "SBE"
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Aimez-vous travailler sur l'amélioration des processus internes ?",
+    "answers": [
+      {
+        "answer": "Oui, j'aime optimiser et améliorer les processus internes.",
+        "categories": [
+          "AGP"
+        ]
+      },
+      {
+        "answer": "Non, je préfère travailler sur l'innovation dans la communication et la technologie.",
+        "categories": [
+          "MIC"
+        ]
+      },
+      {
+        "answer": "Non, je préfère m'investir dans la prière et la formation spirituelle.",
+        "categories": [
+          "EAS"
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Etes-vous à l'aise avec l'idée de rendre des comptes de vos actions dans un cadre formel ?",
+    "answers": [
+      {
+        "answer": "Oui, je suis à l'aise avec l'idée de responsabilité et de rapports.",
+        "categories": [
+          "AGP"
+        ]
+      },
+      {
+        "answer": "Oui, mais je préfère travailler dans un cadre créatif où la communication est essentielle.",
+        "categories": [
+          "MIC"
+        ]
+      },
+      {
+        "answer": "Non, je préfère travailler en collaboration sur des missions externes.",
+        "categories": [
+          "RDDT"
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Seriez-vous prêts à vous engager dans l'organisation et l’animation des activités récréatives ?",
+    "answers": [
+      {
+        "answer": "Oui, c'est ma passion d'organiser des activités récréatives.",
+        "categories": [
+          "AGP"
+        ]
+      },
+      {
+        "answer": "Non, je préfère innover et créer de nouveaux contenus et processus.",
+        "categories": [
+          "MIC"
+        ]
+      },
+      {
+        "answer": "Non, je préfère participer à des missions sur le terrain.",
+        "categories": [
+          "RDDT"
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Aimez-vous gérer des budgets et t'assurer que les ressources sont bien utilisées ?",
+    "answers": [
+      {
+        "answer": "Oui, j'aime planifier et optimiser l'argent disponible.",
+        "categories": [
+          "AGP-1"
+        ]
+      },
+      {
+        "answer": "Non, je préfère organiser et gérer des événements religieux.",
+        "categories": [
+          "AGP-7"
+        ]
+      },
+      {
+        "answer": "Non, je préfère m'occuper de la sécurité pendant les événements.",
+        "categories": [
+          "AGP-5"
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Etes-vous passionné par la coordination des tâches administratives nécessaires bon fonctionnement de l'Église ?",
+    "answers": [
+      {
+        "answer": "Oui, je me sens capable de superviser les tâches administratives.",
+        "categories": [
+          "AGP-2"
+        ]
+      },
+      {
+        "answer": "Non, je préfère gérer les aspects juridiques et m'assurer que tout est en règle.",
+        "categories": [
+          "AGP-3"
+        ]
+      },
+      {
+        "answer": "Non, je préfère m'occuper de l'entretien des bâtiments et des équipements.",
+        "categories": [
+          "AGP-4"
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Souhaitez-vous rejoindre l'équipe juridique pour assister l'Eglise sur les questions légales dans le déploiement de ses activités ?",
+    "answers": [
+      {
+        "answer": "Oui, je m'intéresse aux conseils juridiques et à la gestion des contrats.",
+        "categories": [
+          "AGP-3"
+        ]
+      },
+      {
+        "answer": "Non, je préfère accueillir les membres et les visiteurs.",
+        "categories": [
+          "AGP-8"
+        ]
+      },
+      {
+        "answer": "Non, je préfère organiser et gérer les ressources financières de l'Église.",
+        "categories": [
+          "AGP-1"
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Etes-vous motivé à superviser l'entretien des bâtiments de l'Église ?",
+    "answers": [
+      {
+        "answer": "Oui, j'aime m'assurer que les bâtiments sont bien entretenus.",
+        "categories": ["AGP-4"]
+      },
+      {
+        "answer": "Non, je préfère m'occuper de la sécurité pendant les événements.",
+        "categories": ["AGP-5"]
+      },
+      {
+        "answer": "Non, je préfère gérer les tâches administratives.",
+        "categories": ["AGP-2"]
+      }
+    ]
+  },
+  {
+    "question": "Etes-vous préoccupés par la sécurité des personnes et des lieux pendant les réunions à l'Église ?",
+    "answers": [
+      {
+        "answer": "Oui, je me sens capable de coordonner les mesures de sécurité.",
+        "categories": ["AGP-5"]
+      },
+      {
+        "answer": "Non, je préfère organiser des cultes et des programmes religieux.",
+        "categories": ["AGP-7"]
+      },
+      {
+        "answer": "Non, je préfère m'occuper de l'entretien des bâtiments et des équipements.",
+        "categories": ["AGP-4"]
+      }
+    ]
+  },
+  {
+    "question": "Etes-vous diposé à accueillir des invités et veiller au respect des règles lors des événements ?",
+    "answers": [
+      {
+        "answer": "Oui, j'aime organiser et superviser le protocole.",
+        "categories": ["AGP-6"]
+      },
+      {
+        "answer": "Non, je préfère m'occuper des finances et des tâches administratives.",
+        "categories": ["AGP-1"]
+      },
+      {
+        "answer": "Non, je préfère organiser la logistique des événements religieux.",
+        "categories": ["AGP-7"]
+      }
+    ]
+  },
+  {
+    "question": "Aimez-vousorganiser et coordonner les cultes ainsi que t’assurer qu'ils se déroulent bien ?",
+    "answers": [
+      {
+        "answer": "Oui, j’aimerais contribuer à l’organisation des cultes.",
+        "categories": ["AGP-7"]
+      },
+      {
+        "answer": "Non, je préfère m'occuper de l'accueil des membres.",
+        "categories": ["AGP-8"]
+      },
+      {
+        "answer": "Non, je préfère gérer les aspects juridiques.",
+        "categories": ["AGP-3"]
+      }
+    ]
+  },
+  {
+    "question": "Etes-vous motivé à accueillir chaleureusement les membres et les visiteurs pour qu'ils se sentent bien dès leur arrivée ?",
+    "answers": [
+      {
+        "answer": "Oui, j'aime coordonner l'accueil et l'intégration des nouveaux membres.",
+        "categories": ["AGP-8"]
+      },
+      {
+        "answer": "Non, je préfère m'occuper de la musique et de l'adoration pendant les cultes.",
+        "categories": ["AGP-9"]
+      },
+      {
+        "answer": "Non, je préfère organiser et superviser le protocole lors des événements.",
+        "categories": ["AGP-6"]
+      }
+    ]
+  },
+  {
+    "question": "Aimez-vous participer activement à l'équipe de louange pour diriger ou soutenir la musique pendant les cultes ?",
+    "answers": [
+      {
+        "answer": "Oui, je suis passionné par la musique et l'adoration.",
+        "categories": ["AGP-9"]
+      },
+      {
+        "answer": "Non, je préfère gérer l'administration et la coordination des cultes.",
+        "categories": ["AGP-7"]
+      },
+      {
+        "answer": "Non, je préfère m'occuper des finances de l'Église.",
+        "categories": ["AGP-1"]
+      }
+    ]
+  },
+  {
+    "question": "Etes-vous prêt à superviser l'entretien des équipements de l'Église pour que tout soit sûr et accueillant ?",
+    "answers": [
+      {
+        "answer": "Oui, j'aime m'assurer que tout est en bon état pour les activités de l'Église.",
+        "categories": ["AGP-4"]
+      },
+      {
+        "answer": "Non, je préfère m'occuper de la sécurité pendant les événements.",
+        "categories": ["AGP-5"]
+      },
+      {
+        "answer": "Non, je préfère organiser les cultes et coordonner les programmes de Com-Frat",
+        "categories": ["AGP-7"]
+      }
+    ]
+  },
+  {
+    "question": "",
+    "answers": [
+      {
+        "answer": "",
+        "categories": []
+      },
+      {
+        "answer": "",
+        "categories": []
+      },
+      {
+        "answer": "",
+        "categories": []
+      }
+    ]
+  }
+]
