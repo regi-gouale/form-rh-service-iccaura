@@ -5,8 +5,14 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { QIdFormSchema } from "@/components/questions/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from "@/hooks/use-toast";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
+// import { toast } from "@/hooks/use-toast";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -18,7 +24,6 @@ import {
 } from "@/components/ui/select";
 import { useMemo } from "react";
 import { v4 as uuid4 } from "uuid";
-
 
 const churches = [
   { value: "ICC Au-RA", label: "ICC Au-RA" },
@@ -43,16 +48,26 @@ const QIdForm = () => {
 
   function onSubmit(data: z.infer<typeof QIdFormSchema>) {
     const id = uuid4();
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
+    const personData = {
+      id: id,
+      ...data,
+    };
+    // Sauvegarder les données dans le localStorage
+    localStorage.setItem("personData", JSON.stringify(personData));
+
+    // toast({
+    //   title: "You submitted the following values:",
+    //   description: (
+    //     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+    //       <code className="text-white">
+    //         {JSON.stringify(personData, null, 2)}
+    //       </code>
+    //     </pre>
+    //   ),
+    // });
     router.push(`/questions/${id}`);
   }
+
   return (
     <div>
       <div>
@@ -158,5 +173,3 @@ const QIdForm = () => {
 };
 
 export default QIdForm;
-
-

@@ -23,6 +23,12 @@ type QCardComponentProps = {
       categories: string[];
     }[];
   }[];
+  // person: {
+  //   firstName: string;
+  //   lastName: string;
+  //   email: string;
+  //   church: string;
+  // };
 };
 
 const AnswersScore: { [key: string]: number } = {
@@ -99,6 +105,8 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
               questions[currentQuestionIndex].answers[i].categories[j]
             ] += 1;
           }
+          // store in the local storage
+          localStorage.setItem("answers", JSON.stringify(AnswersScore));
         }
       }
 
