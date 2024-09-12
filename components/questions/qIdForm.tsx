@@ -48,19 +48,19 @@ const QIdForm = () => {
 
   function onSubmit(data: z.infer<typeof QIdFormSchema>) {
     const id = uuid4();
-    const personData = {
+    const person = {
       id: id,
       ...data,
     };
     // Sauvegarder les données dans le localStorage
-    localStorage.setItem("personData", JSON.stringify(personData));
+    localStorage.setItem("person", JSON.stringify(person));
 
     // toast({
     //   title: "You submitted the following values:",
     //   description: (
     //     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
     //       <code className="text-white">
-    //         {JSON.stringify(personData, null, 2)}
+    //         {JSON.stringify(person, null, 2)}
     //       </code>
     //     </pre>
     //   ),

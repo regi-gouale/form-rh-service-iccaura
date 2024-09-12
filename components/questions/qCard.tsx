@@ -105,11 +105,10 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
               questions[currentQuestionIndex].answers[i].categories[j]
             ] += 1;
           }
-          // store in the local storage
-          localStorage.setItem("answers", JSON.stringify(AnswersScore));
         }
       }
-
+      // store in the local storage
+      localStorage.setItem("responses", JSON.stringify(AnswersScore));
       router.push("/results");
     }
   };
