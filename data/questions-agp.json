@@ -350,7 +350,7 @@
     ]
   },
   {
-    "question": "Aimez-vousorganiser et coordonner les cultes ainsi que t’assurer qu'ils se déroulent bien ?",
+    "question": "Aimez-vous organiser et coordonner les cultes ainsi que t’assurer qu'ils se déroulent bien ?",
     "answers": [
       {
         "answer": "Oui, j’aimerais contribuer à l’organisation des cultes.",
@@ -414,23 +414,6 @@
       {
         "answer": "Non, je préfère organiser les cultes et coordonner les programmes de Com-Frat",
         "categories": ["AGP-7"]
-      }
-    ]
-  },
-  {
-    "question": "",
-    "answers": [
-      {
-        "answer": "",
-        "categories": []
-      },
-      {
-        "answer": "",
-        "categories": []
-      },
-      {
-        "answer": "",
-        "categories": []
       }
     ]
   }
