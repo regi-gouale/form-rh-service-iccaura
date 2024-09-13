@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Projet d'orientation bénévole dans une association cultuelle
 
-## Getting Started
+Ce projet consiste en une application web permettant d'orienter une personne souhaitant devenir bénévole dans une association cultuelle. L'application fonctionne en posant un questionnaire à l'utilisateur et en utilisant ses réponses pour le diriger vers le service qui lui correspond le mieux.
 
-First, run the development server:
-
+## Installation
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+$ cp .env.example .env
+$ docker-compose up --build
 ```
+Ouvrir un navigateur et aller à l'adresse `http://localhost:3000`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Une version de l'application est également disponible [ici](https://monservice.egliseiccaura.com/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Technologies utilisées
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Le projet est développé en TypeScript et utilise le framework NestJS pour la création de l'application web.
 
-## Learn More
+Les technologies utilisées sont les suivantes:
+- [NestJS](https://nestjs.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [React](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Docker](https://www.docker.com/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Prisma](https://www.prisma.io/)
+- [SendGrid](https://sendgrid.com/)
 
-To learn more about Next.js, take a look at the following resources:
+## Étapes réalisées
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Les étapes déjà réalisées dans le développement de l'application sont les suivantes:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+[x] Page d'accueil
+[x] Page d'identification du bénévole
+[x] Page du questionnaire
+[x] Page de résultat
 
-## Deploy on Vercel
+## Étapes restantes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Les étapes qui restent à réaliser dans le développement de l'application sont les suivantes:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[] Enregistrement des réponses du questionnaire
+[] Affichage des résultats
+[] Mise en place de la base de données
+[] Envoi de mails de confirmation au bénévole et à l'association
+[] Finalisation de la page de résultats avec des informations sur le service et des graphes
+[] Intégration de toutes les données dans l'application
