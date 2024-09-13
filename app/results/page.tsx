@@ -3,6 +3,21 @@
 import { Loader2 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { categories } from "@/constants";
+import { Bar, BarChart } from "recharts";
+
+import { ChartConfig, ChartContainer } from "@/components/ui/chart";
+import { sendEmail } from "@/lib/send-email";
+
+const chartConfig = {
+  desktop: {
+    label: "Desktop",
+    color: "#2563eb",
+  },
+  mobile: {
+    label: "Mobile",
+    color: "#60a5fa",
+  },
+} satisfies ChartConfig;
 
 const categoriesScore: {
   [key: string]: { score: number; totalQuestions: number };
@@ -114,6 +129,15 @@ const departmentsScore: {
   },
 };
 
+const chartData = [
+  { month: "January", desktop: 186, mobile: 80 },
+  { month: "February", desktop: 305, mobile: 200 },
+  { month: "March", desktop: 237, mobile: 120 },
+  { month: "April", desktop: 73, mobile: 190 },
+  { month: "May", desktop: 209, mobile: 130 },
+  { month: "June", desktop: 214, mobile: 140 },
+];
+
 const ResultsPage = () => {
   interface Person {
     id: string;
@@ -212,7 +236,16 @@ const ResultsPage = () => {
       setMaxResponseDepartmentId(getMaxResponseDepartmentId());
     }
   }, [responses]);
-
+  function onClickButtonSendEmail() {
+      sendEmail({
+        email: person!.qEmail,
+        name: `${person!.qFirstName} ${person!.qLastName}`,
+        message: `${person!.qFirstName}, au regard des réponses données, le service qui te correspond le mieux relève de la filière :
+        - ${getMaxCategoryName()}
+        Le département qui te correspond le mieux est :
+        - ${getDepartmentName()}`,
+      });
+  }
   return (
     <div>
       {person && responses ? (
@@ -228,6 +261,18 @@ const ResultsPage = () => {
             Le département qui te correspond le mieux est{" "}
             <span className="font-bold">{getDepartmentName()}</span>
           </p>
+          <button
+            onClick={onClickButtonSendEmail}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Envoyer par email
+          </button>
+          <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+            <BarChart accessibilityLayer data={chartData}>
+              <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+              <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+            </BarChart>
+          </ChartContainer>
         </div>
       ) : (
         <Loader2 className="size-10 text-white animate-spin" />

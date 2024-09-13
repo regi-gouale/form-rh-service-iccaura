@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/select";
 import { useMemo } from "react";
 import { v4 as uuid4 } from "uuid";
+// import { sendEmail } from "@/lib/send-email";
 
 const churches = [
   { value: "ICC Au-RA", label: "ICC Au-RA" },
@@ -47,6 +48,7 @@ const QIdForm = () => {
   });
 
   function onSubmit(data: z.infer<typeof QIdFormSchema>) {
+
     const id = uuid4();
     const person = {
       id: id,
@@ -64,6 +66,12 @@ const QIdForm = () => {
     //       </code>
     //     </pre>
     //   ),
+    // });
+    // Envoyer un email
+    // sendEmail({
+    //   email: data.qEmail,
+    //   name: `${data.qFirstName} ${data.qLastName}`,
+    //   message: `Merci pour votre inscription. Votre identifiant unique est ${id}.`,
     // });
     router.push(`/questions/${id}`);
   }
