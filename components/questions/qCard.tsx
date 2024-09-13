@@ -122,14 +122,14 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
   }
   return (
     <div className="flex w-full justify-center">
-      <Card className="w-full p-6 space-y-6 dark:">
+      <Card className="w-full p-3 space-y-3">
         <CardHeader>
           <Progress value={progress} />
-          <CardTitle className="text-2xl">
+          <CardTitle className="text-lg sm:text-2xl md:text-3xl text-justify">
             {questions[currentQuestionIndex].question}
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-3">
           <RadioGroup onValueChange={(value) => setSelectedAnswer(value)}>
             {questions[currentQuestionIndex].answers.map((answer) => (
               <div key={answer.answer} className="flex items-center gap-3">
@@ -140,7 +140,7 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
                 />
                 <Label
                   htmlFor={answer.answer}
-                  className="flex items-center justify-between w-full my-2 px-4 py-3 text-lg font-medium rounded-xl cursor-pointer bg-muted hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:bg-primary peer-data-[state=checked]:text-primary-foreground"
+                  className="flex items-center justify-between w-full my-2 px-4 py-3 text-sm sm:text-base font-medium rounded-xl cursor-pointer bg-muted hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:bg-primary peer-data-[state=checked]:text-primary-foreground text-justify"
                 >
                   {answer.answer}
                 </Label>
@@ -154,7 +154,7 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
             variant={"destructive"}
             onClick={handleQuit}
           >
-            Quitter le questionnaire
+            Quitter
           </Button>
           <Button
             className="rounded-full border border-solid border-black/[.08] dark:border-white/[0.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44 dark:hover:text-black"
@@ -162,7 +162,7 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
             disabled={!selectedAnswer}
           >
             {currentQuestionIndex < questions.length - 1
-              ? "Question Suivante"
+              ? "Suivant"
               : "Résultats"}
           </Button>
         </CardFooter>
