@@ -29,18 +29,18 @@ Les technologies utilisées sont les suivantes:
 
 Les étapes déjà réalisées dans le développement de l'application sont les suivantes:
 
-[x] Page d'accueil
-[x] Page d'identification du bénévole
-[x] Page du questionnaire
-[x] Page de résultat
+- [x] Page d'accueil
+- [x] Page d'identification du bénévole
+- [x] Page du questionnaire
+- [x] Page de résultat
 
 ## Étapes restantes
 
 Les étapes qui restent à réaliser dans le développement de l'application sont les suivantes:
 
-[] Enregistrement des réponses du questionnaire
-[] Affichage des résultats
-[] Mise en place de la base de données
-[] Envoi de mails de confirmation au bénévole et à l'association
-[] Finalisation de la page de résultats avec des informations sur le service et des graphes
-[] Intégration de toutes les données dans l'application
+- [ ] Enregistrement des réponses du questionnaire
+- [ ] Affichage des résultats
+- [ ] Mise en place de la base de données
+- [ ] Envoi de mails de confirmation au bénévole et à l'association
+- [ ] Finalisation de la page de résultats avec des informations sur le service et des graphes
+- [ ] Intégration de toutes les données dans l'application
