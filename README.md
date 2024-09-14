@@ -33,6 +33,7 @@ Les étapes déjà réalisées dans le développement de l'application sont les 
 - [x] Page d'identification du bénévole
 - [x] Page du questionnaire
 - [x] Page de résultat
+- [x] Envoi de mails de confirmation au bénévole et à l'association
 
 ## Étapes restantes
 
@@ -41,6 +42,5 @@ Les étapes qui restent à réaliser dans le développement de l'application son
 - [ ] Enregistrement des réponses du questionnaire
 - [ ] Affichage des résultats
 - [ ] Mise en place de la base de données
-- [ ] Envoi de mails de confirmation au bénévole et à l'association
 - [ ] Finalisation de la page de résultats avec des informations sur le service et des graphes
 - [ ] Intégration de toutes les données dans l'application

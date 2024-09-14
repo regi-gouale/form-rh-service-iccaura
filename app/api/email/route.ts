@@ -3,7 +3,7 @@ import nodemailer from "nodemailer";
 import Mail from "nodemailer/lib/mailer";
 
 export async function POST(request: NextRequest) {
-  const { email, name, message } = await request.json();
+  const { email, name, message: messageText, messageHtml } = await request.json();
 
   const transport = nodemailer.createTransport({
     service: "gmail",
@@ -25,11 +25,12 @@ export async function POST(request: NextRequest) {
   });
 
   const mailOptions: Mail.Options = {
-    from: process.env.MY_EMAIL,
+    from: `Noreply ICC Au-RA <${process.env.MY_EMAIL}>`,
     to: email,
     cc: process.env.HR_EMAIL, // send a copy to the sender
-    subject: `${name}, découvre le service qui te correspond le mieux`,
-    text: message,
+    subject: `Proposition de service ICC Au-RA pour ${name}`,
+    text: messageText,
+    html: messageHtml,
   };
 
   const sendMailPromise = () =>

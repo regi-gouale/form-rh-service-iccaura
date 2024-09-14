@@ -237,14 +237,88 @@ const ResultsPage = () => {
     }
   }, [responses]);
   function onClickButtonSendEmail() {
-      sendEmail({
-        email: person!.qEmail,
-        name: `${person!.qFirstName} ${person!.qLastName}`,
-        message: `${person!.qFirstName}, au regard des réponses données, le service qui te correspond le mieux relève de la filière :
+    sendEmail({
+      email: person!.qEmail,
+      name: `${person!.qFirstName} ${person!.qLastName}`,
+      messageText: `
+      Bonjour ${person!.qFirstName}, 
+      Après analyse des informations au regard des réponses données, le service qui te correspond le mieux relève de la filière :
         - ${getMaxCategoryName()}
         Le département qui te correspond le mieux est :
-        - ${getDepartmentName()}`,
-      });
+        - ${getDepartmentName()}
+        
+        Bonjour ${person!.qFirstName},
+
+Après analyse des informations fournies, il semble que le service le mieux adapté à ta situation soit celui de la Filière ${getMaxCategoryName()}. Plus précisément, il s'agirait du Département des ${getDepartmentName()}. Ce département pourra répondre au mieux à tes besoins et t'apporter l'assistance nécessaire. N'hésite pas à me faire part de tes éventuelles questions ou préoccupations.
+
+Bien cordialement,
+Église Impact Centre Chrétien`,
+      messageHtml: `
+      <!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proposition de service adapté</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .email-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: 20px auto;
+      border: 1px solid #e1e1e1;
+    }
+
+    h1 {
+      font-size: 20px;
+      color: #CD2FC5;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+
+    .signature {
+      font-style: italic;
+      color: #555;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="email-container">
+    <h1>Proposition de service adapté</h1>
+
+    <p>Bonjour ${person!.qFirstName},</p>
+
+    <p>Après analyse des informations fournies, il semble que le service le mieux adapté à ta situation soit celui de la
+      <strong>${getMaxCategoryName()}</strong>.</p>
+
+    <p>Plus précisément, il s'agirait du <strong>${getDepartmentName()}</strong>. Ce département pourra
+      répondre au mieux à tes besoins et t'apporter l'assistance nécessaire.</p>
+
+    <p>N'hésite pas à me faire part de tes éventuelles questions ou préoccupations.</p>
+
+    <p class="signature">Bien cordialement,<br>Église Impact Centre Chrétien</p>
+  </div>
+</body>
+
+</html>`,
+    });
   }
   return (
     <div>
