@@ -8,19 +8,23 @@ const ResultsPage = () => {
   const responses = getResponses();
 
   function getPerson() {
-    const storedPerson = localStorage.getItem("person");
-    if (!storedPerson) {
-      console.error("No person found");
+    if (typeof window !== "undefined" && typeof localStorage !== undefined) {
+      const storedPerson = localStorage.getItem("person");
+      if (!storedPerson) {
+        console.error("No person found");
+      }
+      return JSON.parse(storedPerson!);
     }
-    return JSON.parse(storedPerson!);
   }
 
   function getResponses() {
-    const storedResponses = localStorage.getItem("responses");
-    if (!storedResponses) {
-      console.error("No responses found");
+    if (typeof window !== "undefined" && typeof localStorage !== undefined) {
+      const storedResponses = localStorage.getItem("responses");
+      if (!storedResponses) {
+        console.error("No responses found");
+      }
+      return JSON.parse(storedResponses!);
     }
-    return JSON.parse(storedResponses!);
   }
 
   return (

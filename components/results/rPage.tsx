@@ -3,7 +3,7 @@
 import { sendEmail } from "@/lib/send-email";
 import { getMailMessageHtml, getMailMessageText } from "@/lib/utils";
 import { ResultsComponentProps, TScore } from "@/types";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { fields } from "@/constants";
 import {
@@ -11,8 +11,8 @@ import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "../ui/chart";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+} from "@/components/ui/chart";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Bar,
   BarChart,
@@ -21,8 +21,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { Separator } from "../ui/separator";
-import { get } from "http";
+import { Separator } from "@/components/ui/separator";
 
 const ResultsComponent = ({ person, responses }: ResultsComponentProps) => {
   const router = useRouter();
