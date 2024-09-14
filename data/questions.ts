@@ -1559,7 +1559,7 @@ export const questions = [
       },
       {
         answer: "Non, je préfère aider les familles à grandir spirituellement.",
-        categories: ["Ministère de la Famille"],
+        categories: ["EAS_2"],
       },
       {
         answer:
@@ -1575,7 +1575,7 @@ export const questions = [
       {
         answer:
           "Oui, je suis très engagé dans le soutien spirituel des familles.",
-        categories: ["Ministère de la Famille"],
+        categories: ["EAS_2"],
       },
       {
         answer:
@@ -1595,7 +1595,7 @@ export const questions = [
       {
         answer:
           "Oui, je suis passionné par le soutien des familles dans leur foi.",
-        categories: ["Ministère de la Famille"],
+        categories: ["EAS_2"],
       },
       {
         answer: "Non, je préfère enseigner la Bible à un plus grand groupe.",
@@ -1624,7 +1624,7 @@ export const questions = [
       {
         answer:
           "Non, je préfère soutenir les couples, les jeunes dans leur cheminement spirituel.",
-        categories: ["Ministère de la Famille"],
+        categories: ["EAS_2"],
       },
     ],
   },
@@ -1644,7 +1644,7 @@ export const questions = [
       {
         answer:
           "Non, je préfère travailler avec les familles pour les aider à grandir.",
-        categories: ["Ministère de la Famille"],
+        categories: ["EAS_2"],
       },
     ],
   },
