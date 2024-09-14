@@ -3,6 +3,8 @@
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 
+import Image from "next/image";
+
 export default function Home() {
   const router = useRouter();
   function handleButtonServeClick() {
@@ -11,6 +13,15 @@ export default function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+        <div className="w-full flex justify-center justify-items-center p-8">
+          <Image
+            src="/imgDirectionAdmin.jpeg"
+            alt="Direction Administrative ICC Lyon"
+            width={200}
+            height={200}
+            className="rounded-lg"
+          />
+        </div>
         <h1 className="text-3xl sm:text-4xl text-center sm:text-left font-bold">
           Je veux servir à{" "}
           <a
