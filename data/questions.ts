@@ -687,7 +687,7 @@ export const questions = [
   },
   {
     question:
-      "Explorer les nouvelles technologies pour améliorer la communication est un sujet qui vous passionne ",
+      "Explorer les nouvelles technologies pour améliorer la communication est un sujet qui vous passionne.",
     answers: [
       {
         answer:
@@ -747,7 +747,7 @@ export const questions = [
     ],
   },
   {
-    question: "Comment gérez-vous le changement dans votre quotidien?",
+    question: "Comment gérez-vous le changement dans votre quotidien ?",
     answers: [
       {
         answer: "J'encourage toujours l'innovation et les nouvelles idées.",
@@ -1028,7 +1028,7 @@ export const questions = [
     ],
   },
   {
-    question: "Êtes-vous disposé à vous engager au sein de l'équipe SBE-3 ?",
+    question: "Êtes-vous disposé à vous engager au sein de l'équipe ?",
     answers: [
       {
         answer: "Oui, je suis volontaire.",
@@ -1539,7 +1539,7 @@ export const questions = [
       },
       {
         answer: "Non, je préfère aider les familles à grandir spirituellement.",
-        categories: ["Ministère de la Famille"],
+        categories: ["EAS_2"],
       },
       {
         answer:

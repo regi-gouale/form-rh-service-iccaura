@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { QIdFormSchema } from "@/components/questions/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-// import { toast } from "@/hooks/use-toast";
+
 import {
   Form,
   FormControl,
@@ -24,14 +24,7 @@ import {
 } from "@/components/ui/select";
 import { useMemo } from "react";
 import { v4 as uuid4 } from "uuid";
-// import { sendEmail } from "@/lib/send-email";
-
-const churches = [
-  { value: "ICC Au-RA", label: "ICC Au-RA" },
-  { value: "ICC Paris", label: "ICC Paris" },
-  { value: "ICC Lyon", label: "ICC Lyon" },
-  { value: "ICC Marseille", label: "ICC Marseille" },
-];
+import { churches } from "@/constants";
 
 const QIdForm = () => {
   const router = useRouter();
@@ -48,31 +41,14 @@ const QIdForm = () => {
   });
 
   function onSubmit(data: z.infer<typeof QIdFormSchema>) {
-
     const id = uuid4();
     const person = {
       id: id,
       ...data,
     };
-    // Sauvegarder les données dans le localStorage
+
     localStorage.setItem("person", JSON.stringify(person));
 
-    // toast({
-    //   title: "You submitted the following values:",
-    //   description: (
-    //     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-    //       <code className="text-white">
-    //         {JSON.stringify(person, null, 2)}
-    //       </code>
-    //     </pre>
-    //   ),
-    // });
-    // Envoyer un email
-    // sendEmail({
-    //   email: data.qEmail,
-    //   name: `${data.qFirstName} ${data.qLastName}`,
-    //   message: `Merci pour votre inscription. Votre identifiant unique est ${id}.`,
-    // });
     router.push(`/questions/${id}`);
   }
 

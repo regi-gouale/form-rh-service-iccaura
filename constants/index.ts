@@ -110,3 +110,21 @@ export const fields = [
     ],
   },
 ];
+
+export const churches = [
+  {
+    value: "Campus Lyon - Vaulx-En-Vélin",
+    label: "Campus Lyon - Vaulx-En-Vélin",
+  },
+  { value: "Église de Grenoble", label: "Église de Grenoble" },
+  { value: "Église de Clermont-Ferrand", label: "Église de Clermont-Ferrand" },
+  { value: "Église de Sain-Etienne", label: "Église de Saint-Etienne" },
+  { value: "Église de Lyon - Centre", label: "Église de Lyon - Centre" },
+
+  { value: "Famille d'Annecy", label: "Famille d'Annecy" },
+  { value: "Famille d'Annemasse", label: "Famille d'Annemasse" },
+  { value: "Famille de Bourg-en-Bresse", label: "Famille de Bourg-en-Bresse" },
+  { value: "Famille de Chambéry", label: "Famille de Chambéry" },
+  { value: "Famille de Valence", label: "Famille de Valence" },
+  { value: "Famille de Vichy", label: "Famille de Vichy" },
+];
