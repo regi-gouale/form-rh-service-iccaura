@@ -1,16 +1,11 @@
 import QCardComponent from "@/components/questions/qCard";
 import React from "react";
-import { promises as fs } from "fs";
+import { questions } from "@/data/questions";
 
 async function getQuestions() {
-  const file_agp = await fs.readFile(
-    `${process.cwd()}/data/questions-agp.json`,
-    "utf-8"
-  );
-  const questions_agp = JSON.parse(file_agp);
-  const questions = [...questions_agp];
-  questions.sort(() => Math.random() - 0.5);
-  return questions;
+  const questionList = questions;
+  questionList.sort(() => Math.random() - 0.5);
+  return questionList;
 }
 
 const QuestionListPage = async () => {
