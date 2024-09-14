@@ -89,6 +89,10 @@ export const fields = [
         id: "RDDT_2",
         name: "Ministère des Familles d'Impact",
       },
+      {
+        id: "RDDT_3",
+        name: "Relations Extérieures et Associatives",
+      }
     ],
   },
   {

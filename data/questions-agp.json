@@ -235,19 +235,19 @@
       {
         "answer": "Oui, j'aime planifier et optimiser l'argent disponible.",
         "categories": [
-          "AGP-1"
+          "AGP_1"
         ]
       },
       {
         "answer": "Non, je préfère organiser et gérer des événements religieux.",
         "categories": [
-          "AGP-7"
+          "AGP_7"
         ]
       },
       {
         "answer": "Non, je préfère m'occuper de la sécurité pendant les événements.",
         "categories": [
-          "AGP-5"
+          "AGP_5"
         ]
       }
     ]
@@ -258,19 +258,19 @@
       {
         "answer": "Oui, je me sens capable de superviser les tâches administratives.",
         "categories": [
-          "AGP-2"
+          "AGP_2"
         ]
       },
       {
         "answer": "Non, je préfère gérer les aspects juridiques et m'assurer que tout est en règle.",
         "categories": [
-          "AGP-3"
+          "AGP_3"
         ]
       },
       {
         "answer": "Non, je préfère m'occuper de l'entretien des bâtiments et des équipements.",
         "categories": [
-          "AGP-4"
+          "AGP_4"
         ]
       }
     ]
@@ -281,19 +281,19 @@
       {
         "answer": "Oui, je m'intéresse aux conseils juridiques et à la gestion des contrats.",
         "categories": [
-          "AGP-3"
+          "AGP_3"
         ]
       },
       {
         "answer": "Non, je préfère accueillir les membres et les visiteurs.",
         "categories": [
-          "AGP-8"
+          "AGP_8"
         ]
       },
       {
         "answer": "Non, je préfère organiser et gérer les ressources financières de l'Église.",
         "categories": [
-          "AGP-1"
+          "AGP_1"
         ]
       }
     ]
@@ -303,15 +303,15 @@
     "answers": [
       {
         "answer": "Oui, j'aime m'assurer que les bâtiments sont bien entretenus.",
-        "categories": ["AGP-4"]
+        "categories": ["AGP_4"]
       },
       {
         "answer": "Non, je préfère m'occuper de la sécurité pendant les événements.",
-        "categories": ["AGP-5"]
+        "categories": ["AGP_5"]
       },
       {
         "answer": "Non, je préfère gérer les tâches administratives.",
-        "categories": ["AGP-2"]
+        "categories": ["AGP_2"]
       }
     ]
   },
@@ -320,15 +320,15 @@
     "answers": [
       {
         "answer": "Oui, je me sens capable de coordonner les mesures de sécurité.",
-        "categories": ["AGP-5"]
+        "categories": ["AGP_5"]
       },
       {
         "answer": "Non, je préfère organiser des cultes et des programmes religieux.",
-        "categories": ["AGP-7"]
+        "categories": ["AGP_7"]
       },
       {
         "answer": "Non, je préfère m'occuper de l'entretien des bâtiments et des équipements.",
-        "categories": ["AGP-4"]
+        "categories": ["AGP_4"]
       }
     ]
   },
@@ -337,15 +337,15 @@
     "answers": [
       {
         "answer": "Oui, j'aime organiser et superviser le protocole.",
-        "categories": ["AGP-6"]
+        "categories": ["AGP_6"]
       },
       {
         "answer": "Non, je préfère m'occuper des finances et des tâches administratives.",
-        "categories": ["AGP-1"]
+        "categories": ["AGP_1"]
       },
       {
         "answer": "Non, je préfère organiser la logistique des événements religieux.",
-        "categories": ["AGP-7"]
+        "categories": ["AGP_7"]
       }
     ]
   },
@@ -354,15 +354,15 @@
     "answers": [
       {
         "answer": "Oui, j’aimerais contribuer à l’organisation des cultes.",
-        "categories": ["AGP-7"]
+        "categories": ["AGP_7"]
       },
       {
         "answer": "Non, je préfère m'occuper de l'accueil des membres.",
-        "categories": ["AGP-8"]
+        "categories": ["AGP_8"]
       },
       {
         "answer": "Non, je préfère gérer les aspects juridiques.",
-        "categories": ["AGP-3"]
+        "categories": ["AGP_3"]
       }
     ]
   },
@@ -371,15 +371,15 @@
     "answers": [
       {
         "answer": "Oui, j'aime coordonner l'accueil et l'intégration des nouveaux membres.",
-        "categories": ["AGP-8"]
+        "categories": ["AGP_8"]
       },
       {
         "answer": "Non, je préfère m'occuper de la musique et de l'adoration pendant les cultes.",
-        "categories": ["AGP-9"]
+        "categories": ["AGP_9"]
       },
       {
         "answer": "Non, je préfère organiser et superviser le protocole lors des événements.",
-        "categories": ["AGP-6"]
+        "categories": ["AGP_6"]
       }
     ]
   },
@@ -388,15 +388,15 @@
     "answers": [
       {
         "answer": "Oui, je suis passionné par la musique et l'adoration.",
-        "categories": ["AGP-9"]
+        "categories": ["AGP_9"]
       },
       {
         "answer": "Non, je préfère gérer l'administration et la coordination des cultes.",
-        "categories": ["AGP-7"]
+        "categories": ["AGP_7"]
       },
       {
         "answer": "Non, je préfère m'occuper des finances de l'Église.",
-        "categories": ["AGP-1"]
+        "categories": ["AGP_1"]
       }
     ]
   },
@@ -405,15 +405,15 @@
     "answers": [
       {
         "answer": "Oui, j'aime m'assurer que tout est en bon état pour les activités de l'Église.",
-        "categories": ["AGP-4"]
+        "categories": ["AGP_4"]
       },
       {
         "answer": "Non, je préfère m'occuper de la sécurité pendant les événements.",
-        "categories": ["AGP-5"]
+        "categories": ["AGP_5"]
       },
       {
         "answer": "Non, je préfère organiser les cultes et coordonner les programmes de Com-Frat",
-        "categories": ["AGP-7"]
+        "categories": ["AGP_7"]
       }
     ]
   }
