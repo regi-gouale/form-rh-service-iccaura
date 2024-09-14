@@ -52,23 +52,23 @@ const ResultsComponent = ({ person, responses }: ResultsComponentProps) => {
     const fieldsScores: { [key: string]: TScore } = {
       AGP: {
         score: 0,
-        totalQuestions: 10,
+        totalQuestions: 39,
       },
       EAS: {
         score: 0,
-        totalQuestions: 1,
+        totalQuestions: 24,
       },
       SBE: {
         score: 0,
-        totalQuestions: 3,
+        totalQuestions: 25,
       },
       MIC: {
         score: 0,
-        totalQuestions: 10,
+        totalQuestions: 34,
       },
       RDDT: {
         score: 0,
-        totalQuestions: 6,
+        totalQuestions: 31,
       },
     };
 
@@ -111,51 +111,51 @@ const ResultsComponent = ({ person, responses }: ResultsComponentProps) => {
       },
       EAS_1: {
         score: 0,
-        totalQuestions: 1,
+        totalQuestions: 8,
       },
       EAS_2: {
         score: 0,
-        totalQuestions: 1,
+        totalQuestions: 2,
       },
       EAS_3: {
         score: 0,
-        totalQuestions: 1,
+        totalQuestions: 8,
       },
       SBE_1: {
         score: 0,
-        totalQuestions: 1,
+        totalQuestions: 7,
       },
       SBE_2: {
         score: 0,
-        totalQuestions: 1,
+        totalQuestions: 7,
       },
       SBE_3: {
         score: 0,
-        totalQuestions: 1,
+        totalQuestions: 7,
       },
       MIC_1: {
         score: 0,
-        totalQuestions: 10,
+        totalQuestions: 7,
       },
       MIC_2: {
         score: 0,
-        totalQuestions: 1,
+        totalQuestions: 7,
       },
       MIC_3: {
         score: 0,
-        totalQuestions: 1,
+        totalQuestions: 7,
       },
       RDDT_1: {
         score: 0,
-        totalQuestions: 1,
+        totalQuestions: 4,
       },
       RDDT_2: {
         score: 0,
-        totalQuestions: 1,
+        totalQuestions: 100,
       },
       RDDT_3: {
         score: 0,
-        totalQuestions: 1,
+        totalQuestions: 4,
       },
     };
 
