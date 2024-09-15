@@ -114,7 +114,7 @@ const ResultsComponent = ({ person, responses }: ResultsComponentProps) => {
       },
       EAS_2: {
         score: 0,
-        totalQuestions: 3,
+        totalQuestions: 8,
       },
       EAS_3: {
         score: 0,

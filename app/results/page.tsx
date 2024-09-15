@@ -1,5 +1,3 @@
-"use client";
-
 import ResultsComponent from "@/components/results/rPage";
 import { Loader2 } from "lucide-react";
 
