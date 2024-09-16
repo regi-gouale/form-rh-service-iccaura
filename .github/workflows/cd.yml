@@ -26,7 +26,7 @@ jobs:
       #     EXCLUDE: ".next, node_modules, .git, .github"
       - name: Checkout repository
         uses: actions/checkout@v4
-        
+
       - name: Deploy on VPS
         uses: appleboy/ssh-action@master
         with:
@@ -35,6 +35,13 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
+            echo ${{ secrets.TARGET }}
             cd ${{ secrets.TARGET }}
+            if ! command -v docker-compose &> /dev/null
+            then
+              echo "Docker Compose could not be found, installing..."
+              curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+              chmod +x /usr/local/bin/docker-compose
+            fi
             docker-compose down
             docker-compose up --build -d
