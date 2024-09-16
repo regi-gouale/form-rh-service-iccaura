@@ -1,0 +1,26 @@
+name: Mon Service - CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy on SSH
+        uses: easingthemes/ssh-deploy@v5.1.0
+        with:
+          REMOTE_HOST: ${{ secrets.SSH_SERVER }}
+          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_PORT: ${{ secrets.SSH_PORT }}
+          TARGET: ${{ secrets.TARGET}}
+          SCRIPT_BEFORE: |
+            docker compose down
+          SCRIPT_BEFORE_REQUIRED: true
+          SCRIPT_AFTER: |
+            docker compose up --build -d
+          SCRIPT_AFTER_REQUIRED: true
+          EXCLUDE: ".next, node_modules, .git, .github"

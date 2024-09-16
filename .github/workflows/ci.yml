@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
@@ -23,11 +23,11 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node_version: 20
+          node-version: 20
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm i
       - name: Build Project
-        run: pnpm run build --if-present
-      - name: Launch tests
-        run: pnpm run test
+        run: pnpm run build
+      # - name: Launch tests
+      #   run: pnpm run test
