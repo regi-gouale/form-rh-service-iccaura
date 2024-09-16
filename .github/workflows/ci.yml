@@ -28,6 +28,6 @@ jobs:
       - name: Install dependencies
         run: pnpm i
       - name: Build Project
-        run: pnpm run build --if-present
+        run: pnpm run build
       - name: Launch tests
         run: pnpm run test
