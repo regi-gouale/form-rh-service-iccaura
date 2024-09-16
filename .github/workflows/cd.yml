@@ -9,18 +9,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy on SSH
-        uses: easingthemes/ssh-deploy@v5.1.0
+      # - name: Deploy on SSH
+      #   uses: easingthemes/ssh-deploy@v5.1.0
+      #   with:
+      #     REMOTE_HOST: ${{ secrets.SSH_SERVER }}
+      #     REMOTE_USER: ${{ secrets.SSH_USERNAME }}
+      #     SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      #     REMOTE_PORT: ${{ secrets.SSH_PORT }}
+      #     TARGET: ${{ secrets.TARGET}}
+      #     SCRIPT_BEFORE: |
+      #       docker compose down
+      #     SCRIPT_BEFORE_REQUIRED: true
+      #     SCRIPT_AFTER: |
+      #       docker compose up --build -d
+      #     SCRIPT_AFTER_REQUIRED: true
+      #     EXCLUDE: ".next, node_modules, .git, .github"
+      - name: Deploy on VPS
+        uses: appleboy/ssh-action@master
         with:
-          REMOTE_HOST: ${{ secrets.SSH_SERVER }}
-          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_PORT: ${{ secrets.SSH_PORT }}
-          TARGET: ${{ secrets.TARGET}}
-          SCRIPT_BEFORE: |
-            docker compose down
-          SCRIPT_BEFORE_REQUIRED: true
-          SCRIPT_AFTER: |
-            docker compose up --build -d
-          SCRIPT_AFTER_REQUIRED: true
-          EXCLUDE: ".next, node_modules, .git, .github"
+          host: ${{ secrets.SSH_SERVER }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd ${{ secrets.TARGET }}
+            docker-compose down
+            docker-compose up --build -d
