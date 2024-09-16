@@ -76,7 +76,7 @@ const QIdForm = () => {
       });
       if (response.ok) {
         const person = await response.json();
-        localStorage.setItem("person", JSON.stringify(person));
+        localStorage.setItem("personId", person.id);
         router.push(`/questions/${person.id}`);
       }
     } catch (err) {

@@ -55,9 +55,9 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const storedPerson = localStorage.getItem("person");
+      const storedPerson = localStorage.getItem("personId");
       if (storedPerson) {
-        setPersonId(JSON.parse(storedPerson).id);
+        setPersonId(storedPerson);
       }
     }
   }, []);
@@ -120,11 +120,10 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
         } catch (err) {
           console.error("Error saving response:", err);
         }
+        router.push(`/results/${personId}`);
       } else {
         console.error("Person ID is not available");
       }
-
-      router.push(`/results/${personId}`);
     }
   };
 
