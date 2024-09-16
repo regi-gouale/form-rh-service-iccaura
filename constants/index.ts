@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 export const fields = [
   {
     id: "AGP",
@@ -113,18 +115,70 @@ export const fields = [
 
 export const churches = [
   {
+    id: uuidv4(),
     value: "Campus Lyon - Vaulx-En-Vélin",
     label: "Campus Lyon - Vaulx-En-Vélin",
+    address: "",
   },
-  { value: "Église de Grenoble", label: "Église de Grenoble" },
-  { value: "Église de Clermont-Ferrand", label: "Église de Clermont-Ferrand" },
-  { value: "Église de Sain-Etienne", label: "Église de Saint-Etienne" },
-  { value: "Église de Lyon - Centre", label: "Église de Lyon - Centre" },
+  {
+    id: uuidv4(),
+    value: "Église de Grenoble",
+    label: "Église de Grenoble",
+    address: "",
+  },
+  {
+    id: uuidv4(),
+    value: "Église de Clermont-Ferrand",
+    label: "Église de Clermont-Ferrand",
+    address: "",
+  },
+  {
+    id: uuidv4(),
+    value: "Église de Sain-Etienne",
+    label: "Église de Saint-Etienne",
+    address: "",
+  },
+  {
+    id: uuidv4(),
+    value: "Église de Lyon - Centre",
+    label: "Église de Lyon - Centre",
+    address: "",
+  },
 
-  { value: "Famille d'Annecy", label: "Famille d'Annecy" },
-  { value: "Famille d'Annemasse", label: "Famille d'Annemasse" },
-  { value: "Famille de Bourg-en-Bresse", label: "Famille de Bourg-en-Bresse" },
-  { value: "Famille de Chambéry", label: "Famille de Chambéry" },
-  { value: "Famille de Valence", label: "Famille de Valence" },
-  { value: "Famille de Vichy", label: "Famille de Vichy" },
+  {
+    id: uuidv4(),
+    address: "",
+    value: "Famille d'Annecy",
+    label: "Famille d'Annecy",
+  },
+  {
+    id: uuidv4(),
+    address: "",
+    value: "Famille d'Annemasse",
+    label: "Famille d'Annemasse",
+  },
+  {
+    id: uuidv4(),
+    address: "",
+    value: "Famille de Bourg-en-Bresse",
+    label: "Famille de Bourg-en-Bresse",
+  },
+  {
+    id: uuidv4(),
+    address: "",
+    value: "Famille de Chambéry",
+    label: "Famille de Chambéry",
+  },
+  {
+    id: uuidv4(),
+    address: "",
+    value: "Famille de Valence",
+    label: "Famille de Valence",
+  },
+  {
+    id: uuidv4(),
+    address: "",
+    value: "Famille de Vichy",
+    label: "Famille de Vichy",
+  },
 ];

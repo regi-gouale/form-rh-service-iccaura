@@ -46,6 +46,14 @@ export interface Responses {
   [key: string]: number;
 }
 
+export interface IChurch {
+  id: string;
+  name: string;
+  address: string;
+  createdAt: string;
+  updeatedAt: string;
+}
+
 export type QCardComponentProps = {
   questions: {
     question: string;
