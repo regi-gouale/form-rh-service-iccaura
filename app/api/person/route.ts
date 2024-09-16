@@ -39,3 +39,18 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: err }, { status: 500 });
   }
 }
+
+export async function GET(request: Request) {
+  const { personId: id } = await request.json();
+
+  try {
+    const person = await prisma.person.findUnique({
+      where: {
+        id: id,
+      },
+    });
+    return NextResponse.json(person, { status: 200 });
+  } catch (err) {
+    return NextResponse.json({ error: err }, { status: 500 });
+  }
+}

@@ -37,7 +37,7 @@ model Church {
 
 model Response {
   id       String   @id @default(cuid())
-  personId  String
+  personId  String  @unique
   person    Person   @relation(fields: [personId], references: [id])
   scores    Json?
 

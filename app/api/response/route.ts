@@ -15,6 +15,24 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Person not found" }, { status: 404 });
     }
 
+    const existingResponse = await prisma.response.findUnique({
+      where: {
+        personId: personId,
+      },
+    });
+
+    if (existingResponse) {
+      const updatedScores = await prisma.response.update({
+        where: {
+          personId: personId,
+        },
+        data: {
+          scores: scores,
+        },
+      });
+      return NextResponse.json(updatedScores, { status: 409 });
+    }
+
     const createdScores = await prisma.response.create({
       data: {
         personId: personId,

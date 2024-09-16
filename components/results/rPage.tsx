@@ -2,7 +2,7 @@
 
 import { sendEmail } from "@/lib/send-email";
 import { getMailMessageHtml, getMailMessageText } from "@/lib/utils";
-import { ResultsComponentProps, TScore } from "@/types";
+import { TScore } from "@/types";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { fields } from "@/constants";
@@ -22,9 +22,42 @@ import {
   YAxis,
 } from "recharts";
 import { Separator } from "@/components/ui/separator";
+import { useEffect, useState } from "react";
 
-const ResultsComponent = ({ person, responses }: ResultsComponentProps) => {
+const ResultsComponent = () => {
   const router = useRouter();
+
+  const [personId, setPersonId] = useState<string | null>(null);
+  const [person, setPerson] = useState<unknown | null>(null);
+  const [responses, setResponses] = useState<unknown | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedPerson = localStorage.getItem("personId");
+      if (storedPerson) {
+        setPersonId(storedPerson);
+      }
+    }
+  }, []);
+  
+  useEffect(() => {
+    const fetchPersonData = async (id: string) => {
+      try {
+        const response = await fetch(`/api/person?id=${id}`);
+        if (response.ok) {
+          const data = await response.json();
+          setPerson(data);
+        } else {
+          console.error("Error fetching person data:", response.statusText);
+        }
+      } catch (err) {
+        console.error("Error fetching person data:", err);
+      }
+    };
+    if (personId) {
+      fetchPersonData(personId);
+    }
+  }, [personId]);
 
   const handleBackToHome = () => {
     router.push("/");
@@ -452,7 +485,7 @@ const ResultsComponent = ({ person, responses }: ResultsComponentProps) => {
                       tickLine={false}
                       tickMargin={1}
                       axisLine={false}
-                      tick={{ fill: "var(--color-label)", fontSize: '60%' }}
+                      tick={{ fill: "var(--color-label)", fontSize: "60%" }}
                       tickFormatter={(value) =>
                         getDepartmentName(value)!
                           .split(" ")[0]
