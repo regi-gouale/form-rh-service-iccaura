@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -51,13 +51,21 @@ const answersScore: { [key: string]: number } = {
 
 const QCardComponent = ({ questions }: QCardComponentProps) => {
   const router = useRouter();
+  const [personId, setPersonId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const storedPerson = localStorage.getItem("person");
+      if (storedPerson) {
+        setPersonId(JSON.parse(storedPerson).id);
+      }
+    }
+  }, []);
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [progress, setProgress] = useState(0);
-  // const [selectedAnswer, setSelectedAnswer] = useState("");
 
-  const handleNextQuestion = (answer: string) => {
-    // setSelectedAnswer(answer);
+  const handleNextQuestion = async (answer: string) => {
     if (currentQuestionIndex === 0) {
       Object.keys(answersScore).forEach((key) => {
         answersScore[key] = 0;
@@ -69,9 +77,7 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
 
       for (let i = 0; i < questions[currentQuestionIndex].answers.length; i++) {
-        if (
-          questions[currentQuestionIndex].answers[i].answer === answer
-        ) {
+        if (questions[currentQuestionIndex].answers[i].answer === answer) {
           for (
             let j = 0;
             j < questions[currentQuestionIndex].answers[i].categories.length;
@@ -83,12 +89,9 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
           }
         }
       }
-      // setSelectedAnswer("");
     } else {
       for (let i = 0; i < questions[currentQuestionIndex].answers.length; i++) {
-        if (
-          questions[currentQuestionIndex].answers[i].answer === answer
-        ) {
+        if (questions[currentQuestionIndex].answers[i].answer === answer) {
           for (
             let j = 0;
             j < questions[currentQuestionIndex].answers[i].categories.length;
@@ -100,19 +103,30 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
           }
         }
       }
-      // store in the local storage
-      localStorage.setItem("responses", JSON.stringify(answersScore));
-      router.push("/results");
+
+      if (personId) {
+        try {
+          const response = await fetch("/api/response", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              personId: personId,
+              scores: answersScore,
+            }),
+          });
+          console.log("Response:", response);
+        } catch (err) {
+          console.error("Error saving response:", err);
+        }
+      } else {
+        console.error("Person ID is not available");
+      }
+
+      router.push(`/results/${personId}`);
     }
   };
-
-  // const handleSelectAnswer = (answer: string) => {
-  //   console.log("answer", answer);
-
-  //   setSelectedAnswer(answer);
-  //   console.log("selectedAnswer from handleSelectAnswer", selectedAnswer);
-  //   handleNextQuestion();
-  // };
 
   const handleQuit = () => {
     router.push("/");
@@ -132,9 +146,7 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <RadioGroup
-              onValueChange={(value) => handleNextQuestion(value)}
-            >
+            <RadioGroup onValueChange={(value) => handleNextQuestion(value)}>
               {questions[currentQuestionIndex].answers.map((answer) => (
                 <div key={answer.answer} className="flex items-center gap-3">
                   <RadioGroupItem
@@ -160,15 +172,6 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
             >
               Quitter
             </Button>
-            {/* <Button
-              className="rounded-full border border-solid border-black/[.08] dark:border-white/[0.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44 dark:hover:text-black"
-              onClick={handleNextQuestion}
-              disabled={!selectedAnswer}
-            >
-              {currentQuestionIndex < questions.length - 1
-                ? "Suivant"
-                : "Résultats"}
-            </Button> */}
           </CardFooter>
         </Card>
       </div>

@@ -39,33 +39,7 @@ model Response {
   id       String   @id @default(cuid())
   personId  String
   person    Person   @relation(fields: [personId], references: [id])
-  
-  AGP      Int
-  AGP_1    Int
-  AGP_2    Int
-  AGP_3    Int
-  AGP_4    Int
-  AGP_5    Int
-  AGP_6    Int
-  AGP_7    Int
-  AGP_8    Int
-  AGP_9    Int
-  EAS      Int
-  EAS_1    Int
-  EAS_2    Int
-  EAS_3    Int
-  SBE      Int
-  SBE_1    Int
-  SBE_2    Int
-  SBE_3    Int
-  MIC      Int
-  MIC_1    Int
-  MIC_2    Int
-  MIC_3    Int
-  RDDT     Int
-  RDDT_1   Int
-  RDDT_2   Int
-  RDDT_3   Int
+  scores    Json?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
