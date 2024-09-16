@@ -16,7 +16,7 @@ import { Progress } from "@/components/ui/progress";
 import { useRouter } from "next/navigation";
 import { QCardComponentProps } from "@/types";
 
-const AnswersScore: { [key: string]: number } = {
+const answersScore: { [key: string]: number } = {
   AGP: 0,
   AGP_1: 0,
   AGP_2: 0,
@@ -54,50 +54,65 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [progress, setProgress] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState("");
+  // const [selectedAnswer, setSelectedAnswer] = useState("");
 
-  const handleNextQuestion = () => {
+  const handleNextQuestion = (answer: string) => {
+    // setSelectedAnswer(answer);
+    if (currentQuestionIndex === 0) {
+      Object.keys(answersScore).forEach((key) => {
+        answersScore[key] = 0;
+      });
+    }
+
     setProgress(((currentQuestionIndex + 1) / questions.length) * 100);
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
 
       for (let i = 0; i < questions[currentQuestionIndex].answers.length; i++) {
         if (
-          questions[currentQuestionIndex].answers[i].answer === selectedAnswer
+          questions[currentQuestionIndex].answers[i].answer === answer
         ) {
           for (
             let j = 0;
             j < questions[currentQuestionIndex].answers[i].categories.length;
             j++
           ) {
-            AnswersScore[
+            answersScore[
               questions[currentQuestionIndex].answers[i].categories[j]
             ] += 1;
           }
         }
       }
-      setSelectedAnswer("");
+      // setSelectedAnswer("");
     } else {
       for (let i = 0; i < questions[currentQuestionIndex].answers.length; i++) {
         if (
-          questions[currentQuestionIndex].answers[i].answer === selectedAnswer
+          questions[currentQuestionIndex].answers[i].answer === answer
         ) {
           for (
             let j = 0;
             j < questions[currentQuestionIndex].answers[i].categories.length;
             j++
           ) {
-            AnswersScore[
+            answersScore[
               questions[currentQuestionIndex].answers[i].categories[j]
             ] += 1;
           }
         }
       }
       // store in the local storage
-      localStorage.setItem("responses", JSON.stringify(AnswersScore));
+      localStorage.setItem("responses", JSON.stringify(answersScore));
       router.push("/results");
     }
   };
+
+  // const handleSelectAnswer = (answer: string) => {
+  //   console.log("answer", answer);
+
+  //   setSelectedAnswer(answer);
+  //   console.log("selectedAnswer from handleSelectAnswer", selectedAnswer);
+  //   handleNextQuestion();
+  // };
 
   const handleQuit = () => {
     router.push("/");
@@ -117,11 +132,9 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <RadioGroup onValueChange={(value) => 
-      {
-        setSelectedAnswer(value);
-        handleNextQuestion();
-      }}>
+            <RadioGroup
+              onValueChange={(value) => handleNextQuestion(value)}
+            >
               {questions[currentQuestionIndex].answers.map((answer) => (
                 <div key={answer.answer} className="flex items-center gap-3">
                   <RadioGroupItem
@@ -139,7 +152,7 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
               ))}
             </RadioGroup>
           </CardContent>
-          <CardFooter className="flex justify-between">
+          <CardFooter className="flex justify-center">
             <Button
               className="rounded-full border border-solid border-black/[.08] dark:border-white/[0.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44 dark:hover:text-black"
               variant={"destructive"}
@@ -147,7 +160,7 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
             >
               Quitter
             </Button>
-            <Button
+            {/* <Button
               className="rounded-full border border-solid border-black/[.08] dark:border-white/[0.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44 dark:hover:text-black"
               onClick={handleNextQuestion}
               disabled={!selectedAnswer}
@@ -155,7 +168,7 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
               {currentQuestionIndex < questions.length - 1
                 ? "Suivant"
                 : "Résultats"}
-            </Button>
+            </Button> */}
           </CardFooter>
         </Card>
       </div>
