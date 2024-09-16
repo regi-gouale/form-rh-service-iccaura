@@ -36,6 +36,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd ${{ secrets.TARGET }}
+            cat compose.yml
             git pull origin main
             git status
             pwd
