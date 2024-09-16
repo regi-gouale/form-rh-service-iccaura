@@ -1,0 +1,18 @@
+name: Mon Service - CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: debian-latest
+
+    steps:
+      - name: Deploy on SSH
+        uses: easingthemes/ssh-deploy@v2.1.1
+        with:
+          REMOTE_HOST: ${{ secrets.SSH_SERVER }}
+          REMOTE_USER: ${{ secrets.SSH_USERNAME }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_PORT: ${{ secrets.SSH_PORT }}
