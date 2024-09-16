@@ -117,7 +117,11 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <RadioGroup onValueChange={(value) => setSelectedAnswer(value)}>
+            <RadioGroup onValueChange={(value) => 
+      {
+        setSelectedAnswer(value);
+        handleNextQuestion();
+      }}>
               {questions[currentQuestionIndex].answers.map((answer) => (
                 <div key={answer.answer} className="flex items-center gap-3">
                   <RadioGroupItem
