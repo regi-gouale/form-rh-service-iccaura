@@ -12,3 +12,35 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Person {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  firstName String
+  lastName  String
+  churchId  String?  // Add the churchId field
+  church    Church?  @relation(fields: [churchId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  Response Result[]
+}
+
+model Church {
+  id        String   @id @default(cuid())
+  name      String  @unique
+  address   String
+  people    Person[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Result {
+  id       String   @id @default(cuid())
+  personId  String  @unique
+  person    Person   @relation(fields: [personId], references: [id])
+  scores    Json?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

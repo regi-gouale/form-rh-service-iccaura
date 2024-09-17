@@ -34,16 +34,12 @@ export type TChartDepartmentsConfig = {
   };
 };
 
-export interface Person {
+export interface IChurch {
   id: string;
-  qFirstName: string;
-  qLastName: string;
-  qEmail: string;
-  qChurch: string;
-}
-
-export interface Responses {
-  [key: string]: number;
+  name: string;
+  address: string;
+  createdAt: string;
+  updeatedAt: string;
 }
 
 export type QCardComponentProps = {

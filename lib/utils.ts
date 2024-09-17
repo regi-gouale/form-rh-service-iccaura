@@ -5,13 +5,13 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
-export function getMailMessageText({firstname, field, department}: {firstname: string, field: string, department: string}) {
+export function getMailMessageText({firstname, field1, department}: {firstname: string, field1: string, department: string}) {
   return `
-      \nBonjour ${firstname},\n\nAprès analyse des informations fournies, il semblerait que le service le mieux adapté à votre situation soit celui de la Filière ${field}. Plus précisément, il s'agirait du Département des ${department}. \nCe département pourra répondre au mieux à tes besoins et t'apporter l'assistance nécessaire. N'hésite pas à me faire part de tes éventuelles questions ou préoccupations.\n\nBien cordialement,\nÉglise Impact Centre Chrétien`;
+      \nBonjour ${firstname},\n\nAprès analyse des informations fournies, il semblerait que le service le mieux adapté à votre situation soit celui de la Filière ${field1}. Plus précisément, il s'agirait du Département des ${department}. \nCe département pourra répondre au mieux à tes besoins et t'apporter l'assistance nécessaire. N'hésite pas à me faire part de tes éventuelles questions ou préoccupations.\n\nBien cordialement,\nÉglise Impact Centre Chrétien`;
 
 }
 
-export function getMailMessageHtml({firstname, field, department}: {firstname: string, field: string, department: string}) {
+export function getMailMessageHtml({firstname, field1, department1, field2, department2}: {firstname: string, field1: string, department1: string, field2: string, department2: string}) {
   return `<!DOCTYPE html>
 <html lang="fr">
 
@@ -63,13 +63,16 @@ export function getMailMessageHtml({firstname, field, department}: {firstname: s
 
     <p>Bonjour ${firstname},</p>
 
-    <p>Après analyse des informations fournies, il semble que le service le mieux adapté à ta situation soit celui de la
-      <strong>${field}</strong>.</p>
+    <p>Après analyse des informations fournies, il semblerait que les services les mieux adaptés à votre situation soit celui de la
+      <strong>${field1}</strong>.</p>
 
-    <p>Plus précisément, il s'agirait du <strong>${department}</strong>. Ce département pourra
-      répondre au mieux à tes besoins et t'apporter l'assistance nécessaire.</p>
+    <p>Plus précisément, il s'agirait du <strong>${department1}</strong>. 
+    Ou bien de la filière <strong>${field2}</strong> et plus précisément du département <strong>${department2}</strong>.</p>
+    
+    Ces départements pourront
+      répondre au mieux à vos besoins et vous apporter l'assistance nécessaire.</p>
 
-    <p>N'hésite pas à me faire part de tes éventuelles questions ou préoccupations.</p>
+    <p>N'hésitez pas à faire part de tes éventuelles questions ou préoccupations.</p>
 
     <p class="signature">Bien cordialement,<br>Église Impact Centre Chrétien</p>
   </div>
