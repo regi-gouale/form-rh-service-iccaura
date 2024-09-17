@@ -46,6 +46,8 @@ RUN --mount=type=bind,source=package.json,target=package.json \
 
 # Copy the rest of the source files into the image.
 COPY . .
+# Prisma generate
+RUN pnpm prisma generate
 # Run the build script.
 RUN pnpm run build
 
