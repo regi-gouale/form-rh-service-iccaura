@@ -44,10 +44,12 @@ RUN --mount=type=bind,source=package.json,target=package.json \
     --mount=type=cache,target=/root/.local/share/pnpm/store \
     pnpm install --frozen-lockfile
 
+# install prisma
+RUN pnpm i -g prisma
 # Copy the rest of the source files into the image.
 COPY . .
 # Prisma generate
-RUN pnpm prisma generate --schema ./prisma/schema.prisma
+RUN pnpm dlx prisma generate --schema ./prisma/schema.prisma
 # Run the build script.
 RUN pnpm run build
 
