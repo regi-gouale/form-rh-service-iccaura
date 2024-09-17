@@ -219,9 +219,9 @@ const ShowResultsComponent = () => {
       typeof results.scores === "object" &&
       !Array.isArray(results.scores)
     ) {
-      // console.log("Results:", results.scores);
+      
       const responses = results.scores as Prisma.JsonObject;
-      // console.log("Responses:", responses);
+
       Object.keys(responses!).forEach((key) => {
         if (key.includes("_")) {
           if (responses[key] !== null && responses[key] !== undefined) {
@@ -231,7 +231,7 @@ const ShowResultsComponent = () => {
             );
           }
         } else {
-          // console.log("Key:", key, "Value:", responses[key]);
+          
           fieldsScores[key].score = Math.ceil(
             (Number(responses[key]) / fieldsScores[key].totalQuestions) * 100
           );
@@ -593,7 +593,7 @@ const ShowResultsComponent = () => {
                           .split(",")[0]
                           .toUpperCase()
                       }
-                      // hide
+                      
                     />
                     <XAxis dataKey="score" type="number" hide />
                     <ChartTooltip

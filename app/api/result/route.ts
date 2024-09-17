@@ -51,7 +51,10 @@ export async function GET(request: NextRequest) {
 
   try {
     if (!personId) {
-      return NextResponse.json({ error: "Person ID is required" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Person ID is required" },
+        { status: 400 }
+      );
     }
     const resultData = await prisma.result.findFirst({
       where: {

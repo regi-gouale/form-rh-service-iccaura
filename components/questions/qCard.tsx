@@ -106,7 +106,7 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
 
       if (personId) {
         try {
-          const response = await fetch("/api/result", {
+          await fetch("/api/result", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -116,7 +116,7 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
               scores: answersScore,
             }),
           });
-          console.log("Response:", response);
+
         } catch (err) {
           console.error("Error saving response:", err);
         }
