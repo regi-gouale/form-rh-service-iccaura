@@ -45,7 +45,7 @@ RUN --mount=type=bind,source=package.json,target=package.json \
     pnpm install --frozen-lockfile
 
 # install prisma
-RUN pnpm i -g prisma
+RUN pnpm i prisma
 # Copy the rest of the source files into the image.
 COPY . .
 # Prisma generate
