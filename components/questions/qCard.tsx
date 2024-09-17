@@ -106,7 +106,7 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
 
       if (personId) {
         try {
-          const response = await fetch("/api/response", {
+          const response = await fetch("/api/result", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
@@ -15,14 +15,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Person not found" }, { status: 404 });
     }
 
-    const existingResponse = await prisma.response.findUnique({
+    const matchingResult = await prisma.result.findFirst({
       where: {
         personId: personId,
       },
     });
 
-    if (existingResponse) {
-      const updatedScores = await prisma.response.update({
+    if (matchingResult) {
+      const updatedScores = await prisma.result.update({
         where: {
           personId: personId,
         },
@@ -33,13 +33,32 @@ export async function POST(request: Request) {
       return NextResponse.json(updatedScores, { status: 409 });
     }
 
-    const createdScores = await prisma.response.create({
+    const createdScores = await prisma.result.create({
       data: {
         personId: personId,
         scores: scores,
       },
     });
     return NextResponse.json(createdScores, { status: 201 });
+  } catch (err) {
+    return NextResponse.json({ error: err }, { status: 500 });
+  }
+}
+
+export async function GET(request: NextRequest) {
+  const url = new URL(request.url);
+  const personId = url.searchParams.get("id");
+
+  try {
+    if (!personId) {
+      return NextResponse.json({ error: "Person ID is required" }, { status: 400 });
+    }
+    const resultData = await prisma.result.findFirst({
+      where: {
+        personId: personId!,
+      },
+    });
+    return NextResponse.json(resultData, { status: 200 });
   } catch (err) {
     return NextResponse.json({ error: err }, { status: 500 });
   }

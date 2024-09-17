@@ -34,18 +34,6 @@ export type TChartDepartmentsConfig = {
   };
 };
 
-export interface Person {
-  id: string;
-  qFirstName: string;
-  qLastName: string;
-  qEmail: string;
-  qChurch: string;
-}
-
-export interface Responses {
-  [key: string]: number;
-}
-
 export interface IChurch {
   id: string;
   name: string;

@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 const prisma = new PrismaClient();
 
@@ -40,13 +40,17 @@ export async function POST(request: Request) {
   }
 }
 
-export async function GET(request: Request) {
-  const { personId: id } = await request.json();
+export async function GET(request: NextRequest) {
+  const url = new URL(request.url);
+  const personId = url.searchParams.get("id");
 
   try {
+    if (!personId) {
+      return NextResponse.json({ error: "Person ID is required" }, { status: 400 });
+    }
     const person = await prisma.person.findUnique({
       where: {
-        id: id,
+        id: personId!,
       },
     });
     return NextResponse.json(person, { status: 200 });

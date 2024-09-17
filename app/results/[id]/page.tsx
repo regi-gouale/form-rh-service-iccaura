@@ -1,4 +1,5 @@
-import ResultsComponent from "@/components/results/rPage";
+// import ResultsComponent from "@/components/results/rPage";
+import ShowResultsComponent from "@/components/results/showResultsComponent";
 // import { Loader2 } from "lucide-react";
 
 const ResultsPage = () => {
@@ -27,7 +28,8 @@ const ResultsPage = () => {
 
   return (
     <div className="grid items-center justify-items-center h-screen mx-auto">
-      <ResultsComponent />
+      {/* <ResultsComponent /> */}
+      <ShowResultsComponent />
       {/* {person && responses ? (
         <ResultsComponent person={person} responses={responses} />
       ) : (
