@@ -26,6 +26,7 @@ import { useEffect, useState } from "react";
 
 import Loading from "@/app/loading";
 import { IChurch } from "@/types";
+import { useStore } from "@/hooks/use-store";
 
 const QIdForm = () => {
   const router = useRouter();
@@ -76,7 +77,8 @@ const QIdForm = () => {
       });
       if (response.ok) {
         const person = await response.json();
-        localStorage.setItem("personId", person.id);
+
+        useStore.setState({ personId: person.id });
         router.push(`/questions/${person.id}`);
       }
     } catch (err) {

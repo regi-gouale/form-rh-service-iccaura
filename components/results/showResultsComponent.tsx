@@ -33,6 +33,7 @@ import {
   kRTDepartmentsIds,
   kSBEDepartmentsIds,
 } from "@/constants";
+import { useStore } from "@/hooks/use-store";
 
 const ShowResultsComponent = () => {
   const router = useRouter();
@@ -44,7 +45,8 @@ const ShowResultsComponent = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const storedPerson = localStorage.getItem("personId");
+      // const storedPerson = localStorage.getItem("personId");
+      const storedPerson = useStore.getState().personId;
       if (storedPerson) {
         setPersonId(storedPerson);
       }

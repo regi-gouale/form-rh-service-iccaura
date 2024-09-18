@@ -16,6 +16,7 @@ import { Progress } from "@/components/ui/progress";
 import { useRouter } from "next/navigation";
 import { QCardComponentProps } from "@/types";
 import { kAnswersScore } from "@/constants";
+import { useStore } from "@/hooks/use-store";
 
 const answersScore: { [key: string]: number } = kAnswersScore;
 
@@ -25,7 +26,9 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const storedPerson = localStorage.getItem("personId");
+      // const storedPerson = localStorage.getItem("personId");
+      const storedPerson = useStore.getState().personId;
+      
       if (storedPerson) {
         setPersonId(storedPerson);
       }
