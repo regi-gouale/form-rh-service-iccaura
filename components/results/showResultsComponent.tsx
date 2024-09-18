@@ -5,14 +5,34 @@ import { TScore } from "@/types";
 import { Person, Prisma, Result } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
+// import {
+//   ChartConfig,
+//   // ChartContainer,
+//   // ChartTooltip,
+//   // ChartTooltipContent,
+// } from "@/components/ui/chart";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { sendEmail } from "@/lib/send-email";
 import { getMailMessageHtml } from "@/lib/utils";
-import { Bar, BarChart, CartesianGrid, LabelList, XAxis, YAxis } from "recharts";
-import { kAGPDepartmentsIds, kDepartmentsScores, kEASDepartmentsIds, kFieldsScores, kMICDepartmentsIds, kRTDepartmentsIds, kSBEDepartmentsIds } from "@/constants";
+// import {
+//   Bar,
+//   BarChart,
+//   CartesianGrid,
+//   LabelList,
+//   XAxis,
+//   YAxis,
+// } from "recharts";
+import {
+  kAGPDepartmentsIds,
+  kDepartmentsScores,
+  kEASDepartmentsIds,
+  kFieldsScores,
+  kMICDepartmentsIds,
+  kRTDepartmentsIds,
+  kSBEDepartmentsIds,
+} from "@/constants";
 
 const ShowResultsComponent = () => {
   const router = useRouter();
@@ -90,13 +110,15 @@ const ShowResultsComponent = () => {
           getFieldsAndDepartmentsRecommandations().firstRecommandation.field
         )!,
         department1: getDepartmentName(
-          getFieldsAndDepartmentsRecommandations().firstRecommandation.department
+          getFieldsAndDepartmentsRecommandations().firstRecommandation
+            .department
         )!,
         field2: getFieldName(
           getFieldsAndDepartmentsRecommandations().secondRecommandation.field
         )!,
         department2: getDepartmentName(
-          getFieldsAndDepartmentsRecommandations().secondRecommandation.department
+          getFieldsAndDepartmentsRecommandations().secondRecommandation
+            .department
         )!,
       }),
     });
@@ -114,7 +136,6 @@ const ShowResultsComponent = () => {
       typeof results.scores === "object" &&
       !Array.isArray(results.scores)
     ) {
-      
       const responses = results.scores as Prisma.JsonObject;
 
       Object.keys(responses!).forEach((key) => {
@@ -126,7 +147,6 @@ const ShowResultsComponent = () => {
             );
           }
         } else {
-          
           fieldsScores[key].score = Math.ceil(
             (Number(responses[key]) / fieldsScores[key].totalQuestions) * 100
           );
@@ -282,69 +302,69 @@ const ShowResultsComponent = () => {
     return { firstRecommandation, secondRecommandation };
   };
 
-  const getChartFirstRecommandationData = () => {
-    const { firstRecommandation } = getFieldsAndDepartmentsRecommandations();
-    const fieldId = firstRecommandation.field;
+  // const getChartFirstRecommandationData = () => {
+  //   const { firstRecommandation } = getFieldsAndDepartmentsRecommandations();
+  //   const fieldId = firstRecommandation.field;
 
-    const fieldDepartmentsScores = departmentsScoresOfField(fieldId);
+  //   const fieldDepartmentsScores = departmentsScoresOfField(fieldId);
 
-    const chartData = [];
-    for (const key in fieldDepartmentsScores) {
-      chartData.push({
-        department: key,
-        score: fieldDepartmentsScores[key].score,
-        fill: "#1a1e18",
-      });
-    }
-    return chartData;
-  };
+  //   const chartData = [];
+  //   for (const key in fieldDepartmentsScores) {
+  //     chartData.push({
+  //       department: key,
+  //       score: fieldDepartmentsScores[key].score,
+  //       fill: "#1a1e18",
+  //     });
+  //   }
+  //   return chartData;
+  // };
 
-  const getChartFirstRecommandationConfig = () => {
-    const { firstRecommandation } = getFieldsAndDepartmentsRecommandations();
-    const fieldId = firstRecommandation.field;
+  // const getChartFirstRecommandationConfig = () => {
+  //   const { firstRecommandation } = getFieldsAndDepartmentsRecommandations();
+  //   const fieldId = firstRecommandation.field;
 
-    const fieldDepartmentsScores = departmentsScoresOfField(fieldId);
-    const chartConfig = {} as ChartConfig;
-    for (const key in fieldDepartmentsScores) {
-      chartConfig[key] = {
-        label: key,
-        color: "#1a1e18",
-      };
-    }
-    return chartConfig;
-  };
+  //   const fieldDepartmentsScores = departmentsScoresOfField(fieldId);
+  //   const chartConfig = {} as ChartConfig;
+  //   for (const key in fieldDepartmentsScores) {
+  //     chartConfig[key] = {
+  //       label: key,
+  //       color: "#1a1e18",
+  //     };
+  //   }
+  //   return chartConfig;
+  // };
 
-  const getChartSecondRecommandationData = () => {
-    const { secondRecommandation } = getFieldsAndDepartmentsRecommandations();
-    const fieldId = secondRecommandation.field;
+  // const getChartSecondRecommandationData = () => {
+  //   const { secondRecommandation } = getFieldsAndDepartmentsRecommandations();
+  //   const fieldId = secondRecommandation.field;
 
-    const fieldDepartmentsScores = departmentsScoresOfField(fieldId);
+  //   const fieldDepartmentsScores = departmentsScoresOfField(fieldId);
 
-    const chartData = [];
-    for (const key in fieldDepartmentsScores) {
-      chartData.push({
-        department: key,
-        score: fieldDepartmentsScores[key].score,
-        fill: "#1a1e18",
-      });
-    }
-    return chartData;
-  };
+  //   const chartData = [];
+  //   for (const key in fieldDepartmentsScores) {
+  //     chartData.push({
+  //       department: key,
+  //       score: fieldDepartmentsScores[key].score,
+  //       fill: "#1a1e18",
+  //     });
+  //   }
+  //   return chartData;
+  // };
 
-  const getChartSecondRecommandationConfig = () => {
-    const { secondRecommandation } = getFieldsAndDepartmentsRecommandations();
-    const fieldId = secondRecommandation.field;
+  // const getChartSecondRecommandationConfig = () => {
+  //   const { secondRecommandation } = getFieldsAndDepartmentsRecommandations();
+  //   const fieldId = secondRecommandation.field;
 
-    const fieldDepartmentsScores = departmentsScoresOfField(fieldId);
-    const chartConfig = {} as ChartConfig;
-    for (const key in fieldDepartmentsScores) {
-      chartConfig[key] = {
-        label: key,
-        color: "#1a1e18",
-      };
-    }
-    return chartConfig;
-  };
+  //   const fieldDepartmentsScores = departmentsScoresOfField(fieldId);
+  //   const chartConfig = {} as ChartConfig;
+  //   for (const key in fieldDepartmentsScores) {
+  //     chartConfig[key] = {
+  //       label: key,
+  //       color: "#1a1e18",
+  //     };
+  //   }
+  //   return chartConfig;
+  // };
 
   return (
     <div className="flex w-full justify-center">
@@ -419,7 +439,7 @@ const ShowResultsComponent = () => {
             </CardContent>
           </Card>
         </div>
-        <div className="grid grid-cols-1 gap-6 md:gap-8 w-full justify-between">
+        {/* <div className="grid grid-cols-1 gap-6 md:gap-8 w-full justify-between">
           <Card>
             <CardHeader>
               <CardTitle className="text-center text-lg">
@@ -454,7 +474,7 @@ const ShowResultsComponent = () => {
                 {/* {getFieldName(
                   getFieldAndDepartmentIds()!.departmentId.split("_")[0]
                 )} */}
-              </CardTitle>
+        {/* </CardTitle>
               <CardContent>
                 <Separator />
                 <ChartContainer config={getChartSecondRecommandationConfig()}>
@@ -485,14 +505,14 @@ const ShowResultsComponent = () => {
                       cursor={false}
                       content={<ChartTooltipContent indicator="line" />}
                     />
-                    <Bar dataKey="score" fill="#8884d8" radius={4}>
-                      {/* <LabelList
+                    <Bar dataKey="score" fill="#8884d8" radius={4}> */}
+        {/* <LabelList
                         dataKey="department"
                         position="insideLeft"
                         offset={8}
                         className="fill-[--color-label]"
                       /> */}
-                      <LabelList
+        {/* <LabelList
                         dataKey="score"
                         position="right"
                         offset={2}
@@ -504,7 +524,7 @@ const ShowResultsComponent = () => {
               </CardContent>
             </CardHeader>
           </Card>
-        </div>
+        </div> */}
       </div>
     </div>
   );
