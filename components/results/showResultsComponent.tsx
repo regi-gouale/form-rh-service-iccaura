@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { sendEmail } from "@/lib/send-email";
 import { getMailMessageHtml } from "@/lib/utils";
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis, YAxis } from "recharts";
+import { kAGPDepartmentsIds, kDepartmentsScores, kEASDepartmentsIds, kFieldsScores, kMICDepartmentsIds, kRTDepartmentsIds, kSBEDepartmentsIds } from "@/constants";
 
 const ShowResultsComponent = () => {
   const router = useRouter();
@@ -103,115 +104,9 @@ const ShowResultsComponent = () => {
   };
 
   const calculateScores = () => {
-    const fieldsScores: { [key: string]: TScore } = {
-      AGP: {
-        score: 0,
-        totalQuestions: 39,
-      },
-      EAS: {
-        score: 0,
-        totalQuestions: 24,
-      },
-      SBE: {
-        score: 0,
-        totalQuestions: 25,
-      },
-      MIC: {
-        score: 0,
-        totalQuestions: 34,
-      },
-      RDDT: {
-        score: 0,
-        totalQuestions: 31,
-      },
-    };
+    const fieldsScores: { [key: string]: TScore } = kFieldsScores;
 
-    const departmentsScores: { [key: string]: TScore } = {
-      AGP_1: {
-        score: 0,
-        totalQuestions: 4,
-      },
-      AGP_2: {
-        score: 0,
-        totalQuestions: 2,
-      },
-      AGP_3: {
-        score: 0,
-        totalQuestions: 3,
-      },
-      AGP_4: {
-        score: 0,
-        totalQuestions: 4,
-      },
-      AGP_5: {
-        score: 0,
-        totalQuestions: 4,
-      },
-      AGP_6: {
-        score: 0,
-        totalQuestions: 2,
-      },
-      AGP_7: {
-        score: 0,
-        totalQuestions: 6,
-      },
-      AGP_8: {
-        score: 0,
-        totalQuestions: 3,
-      },
-      AGP_9: {
-        score: 0,
-        totalQuestions: 2,
-      },
-      EAS_1: {
-        score: 0,
-        totalQuestions: 8,
-      },
-      EAS_2: {
-        score: 0,
-        totalQuestions: 8,
-      },
-      EAS_3: {
-        score: 0,
-        totalQuestions: 8,
-      },
-      SBE_1: {
-        score: 0,
-        totalQuestions: 7,
-      },
-      SBE_2: {
-        score: 0,
-        totalQuestions: 7,
-      },
-      SBE_3: {
-        score: 0,
-        totalQuestions: 7,
-      },
-      MIC_1: {
-        score: 0,
-        totalQuestions: 7,
-      },
-      MIC_2: {
-        score: 0,
-        totalQuestions: 7,
-      },
-      MIC_3: {
-        score: 0,
-        totalQuestions: 7,
-      },
-      RDDT_1: {
-        score: 0,
-        totalQuestions: 4,
-      },
-      RDDT_2: {
-        score: 0,
-        totalQuestions: 100,
-      },
-      RDDT_3: {
-        score: 0,
-        totalQuestions: 4,
-      },
-    };
+    const departmentsScores: { [key: string]: TScore } = kDepartmentsScores;
 
     if (
       results &&
@@ -243,17 +138,7 @@ const ShowResultsComponent = () => {
 
   const departmentsScoresOfAGPField = () => {
     const { departmentsScores } = calculateScores()!;
-    const AGPDepartments = [
-      "AGP_1",
-      "AGP_2",
-      "AGP_3",
-      "AGP_4",
-      "AGP_5",
-      "AGP_6",
-      "AGP_7",
-      "AGP_8",
-      "AGP_9",
-    ];
+    const AGPDepartments = kAGPDepartmentsIds;
     const AGPDepartmentsScores = {} as { [key: string]: TScore };
     for (const key of AGPDepartments) {
       AGPDepartmentsScores[key] = departmentsScores[key];
@@ -263,7 +148,7 @@ const ShowResultsComponent = () => {
 
   const departmentsScoresOfEASField = () => {
     const { departmentsScores } = calculateScores()!;
-    const EASDepartments = ["EAS_1", "EAS_2", "EAS_3"];
+    const EASDepartments = kEASDepartmentsIds;
     const EASDepartmentsScores = {} as { [key: string]: TScore };
     for (const key of EASDepartments) {
       EASDepartmentsScores[key] = departmentsScores[key];
@@ -273,7 +158,7 @@ const ShowResultsComponent = () => {
 
   const departmentsScoresOfSBEField = () => {
     const { departmentsScores } = calculateScores()!;
-    const SBEDepartments = ["SBE_1", "SBE_2", "SBE_3"];
+    const SBEDepartments = kSBEDepartmentsIds;
     const SBEDepartmentsScores = {} as { [key: string]: TScore };
     for (const key of SBEDepartments) {
       SBEDepartmentsScores[key] = departmentsScores[key];
@@ -283,7 +168,7 @@ const ShowResultsComponent = () => {
 
   const departmentsScoresOfMICField = () => {
     const { departmentsScores } = calculateScores()!;
-    const MICDepartments = ["MIC_1", "MIC_2", "MIC_3"];
+    const MICDepartments = kMICDepartmentsIds;
     const MICDepartmentsScores = {} as { [key: string]: TScore };
     for (const key of MICDepartments) {
       MICDepartmentsScores[key] = departmentsScores[key];
@@ -291,14 +176,14 @@ const ShowResultsComponent = () => {
     return MICDepartmentsScores;
   };
 
-  const departmentsScoresOfRDDTField = () => {
+  const departmentsScoresOfRTField = () => {
     const { departmentsScores } = calculateScores()!;
-    const RDDTDepartments = ["RDDT_1", "RDDT_2", "RDDT_3"];
-    const RDDTDepartmentsScores = {} as { [key: string]: TScore };
-    for (const key of RDDTDepartments) {
-      RDDTDepartmentsScores[key] = departmentsScores[key];
+    const RTDepartments = kRTDepartmentsIds;
+    const RTDepartmentsScores = {} as { [key: string]: TScore };
+    for (const key of RTDepartments) {
+      RTDepartmentsScores[key] = departmentsScores[key];
     }
-    return RDDTDepartmentsScores;
+    return RTDepartmentsScores;
   };
 
   const departmentsScoresOfField = (fieldId: string) => {
@@ -311,8 +196,8 @@ const ShowResultsComponent = () => {
         return departmentsScoresOfSBEField();
       case "MIC":
         return departmentsScoresOfMICField();
-      case "RDDT":
-        return departmentsScoresOfRDDTField();
+      case "RT":
+        return departmentsScoresOfRTField();
     }
   };
 

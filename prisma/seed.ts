@@ -1,10 +1,10 @@
 import { PrismaClient } from "@prisma/client";
-import { churches } from "../constants/index";
+import { kChurches } from "../constants/index";
 
 const prisma = new PrismaClient();
 
 async function main() {
-  for (const church of churches) {
+  for (const church of kChurches) {
     const _church = await prisma.church.upsert({
       where: {
         name: church.label,

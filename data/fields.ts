@@ -1,11 +1,11 @@
 export const fields = [
   {
     id: "AGP",
-    name: "Administration et Gestion des Programmes",
+    name: "Administration & Gestion des Programmes",
     departments: [
       {
         id: "AGP_1",
-        name: "Finances, Audit et Achat",
+        name: "Finances, Audits & Achats",
       },
       {
         id: "AGP_2",
@@ -17,11 +17,11 @@ export const fields = [
       },
       {
         id: "AGP_4",
-        name: "Intendance et Maintenance du Site",
+        name: "Intendance & Maintenance du Site",
       },
       {
         id: "AGP_5",
-        name: "Sécurité et Surêté",
+        name: "Sécurité/Surêté",
       },
       {
         id: "AGP_6",
@@ -29,25 +29,33 @@ export const fields = [
       },
       {
         id: "AGP_7",
-        name: "Gestion des Cultes et de la Coordination des Programmes",
+        name: "Gestion de Cultes & de la Coordination des Programmes",
       },
       {
         id: "AGP_8",
-        name: "Accueil et Installation des Personnes",
+        name: "Accueil",
       },
       {
         id: "AGP_9",
-        name: "Ministère de la Louange et de l'Adoration",
+        name: "Ministère de la Louange & de l'Adoration",
+      },
+      {
+        id: "AGP_10",
+        name: "Activités Récréatives",
+      },
+      {
+        id: "AGP_11",
+        name: "Ressources Humaines",
       },
     ],
   },
   {
     id: "EAS",
-    name: "Édification et Affermissement Spirituel",
+    name: "Edification & Affermissement Spirituel",
     departments: [
       {
         id: "EAS_1",
-        name: "Ministère de la Formation et de la Formation Biblique",
+        name: "Ministère de la Formation & de la Formation Biblique",
       },
       {
         id: "EAS_2",
@@ -55,13 +63,17 @@ export const fields = [
       },
       {
         id: "EAS_3",
-        name: "Ministère de la Veille, de l'Intercession et de l'Évangélisation",
+        name: "Ministère de la Prière & de l’Évangélisation",
+      },
+      {
+        id: "EAS_4",
+        name: "Ministère des Familles d'Impact",
       },
     ],
   },
   {
     id: "SBE",
-    name: "Santé et Bien-Être",
+    name: "Santé & Bien_Être",
     departments: [
       {
         id: "SBE_1",
@@ -78,26 +90,22 @@ export const fields = [
     ],
   },
   {
-    id: "RDDT",
-    name: "Rayonnement Territorial ou Dynamique Territoriale",
+    id: "RT",
+    name: "Rayonnement Territorial",
     departments: [
       {
-        id: "RDDT_1",
-        name: "Mission  d'Implantation des Églises",
+        id: "RT_1",
+        name: "Mission Implantation d'Églises",
       },
       {
-        id: "RDDT_2",
-        name: "Ministère des Familles d'Impact",
+        id: "RT_2",
+        name: "Relations Extérieures & Associatives",
       },
-      {
-        id: "RDDT_3",
-        name: "Relations Extérieures et Associatives",
-      }
     ],
   },
   {
     id: "MIC",
-    name: "Médias, Innovation et Communication",
+    name: "Médias, Innovation & Communication",
     departments: [
       {
         id: "MIC_1",
@@ -109,7 +117,7 @@ export const fields = [
       },
       {
         id: "MIC_3",
-        name: "Système d'Information, NTIC",
+        name: "Système d'Information - Nouvelles Technologies",
       },
     ],
   },

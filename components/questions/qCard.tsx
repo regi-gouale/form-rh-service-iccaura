@@ -15,39 +15,9 @@ import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { useRouter } from "next/navigation";
 import { QCardComponentProps } from "@/types";
+import { kAnswersScore } from "@/constants";
 
-const answersScore: { [key: string]: number } = {
-  AGP: 0,
-  AGP_1: 0,
-  AGP_2: 0,
-  AGP_3: 0,
-  AGP_4: 0,
-  AGP_5: 0,
-  AGP_6: 0,
-  AGP_7: 0,
-  AGP_8: 0,
-  AGP_9: 0,
-
-  EAS: 0,
-  EAS_1: 0,
-  EAS_2: 0,
-  EAS_3: 0,
-
-  SBE: 0,
-  SBE_1: 0,
-  SBE_2: 0,
-  SBE_3: 0,
-
-  MIC: 0,
-  MIC_1: 0,
-  MIC_2: 0,
-  MIC_3: 0,
-
-  RDDT: 0,
-  RDDT_1: 0,
-  RDDT_2: 0,
-  RDDT_3: 0,
-};
+const answersScore: { [key: string]: number } = kAnswersScore;
 
 const QCardComponent = ({ questions }: QCardComponentProps) => {
   const router = useRouter();
