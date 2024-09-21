@@ -37,10 +37,11 @@ Les étapes déjà réalisées dans le développement de l'application sont les 
 - [x] Affichage des résultats
 - [x] Finalisation de la page de résultats avec des informations sur le service et des graphes
 - [x] Intégration de toutes les données dans l'application
+- [x] Enregistrement des réponses du questionnaire
+- [x] Mise en place de la base de données
 
 ## Étapes restantes
 
 Les étapes qui restent à réaliser dans le développement de l'application sont les suivantes:
 
-- [ ] Enregistrement des réponses du questionnaire
-- [ ] Mise en place de la base de données
+
