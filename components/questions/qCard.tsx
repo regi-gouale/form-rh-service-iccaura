@@ -26,7 +26,6 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // const storedPerson = localStorage.getItem("personId");
       const storedPerson = useStore.getState().personId;
       
       if (storedPerson) {

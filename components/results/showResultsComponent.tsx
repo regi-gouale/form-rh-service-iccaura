@@ -45,7 +45,6 @@ const ShowResultsComponent = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // const storedPerson = localStorage.getItem("personId");
       const storedPerson = useStore.getState().personId;
       if (storedPerson) {
         setPersonId(storedPerson);
@@ -90,6 +89,10 @@ const ShowResultsComponent = () => {
       fetchResponsesData(personId);
     }
   }, [personId]);
+
+  setTimeout(() => {
+
+  }, 1000);
 
   const onBackAndSendEmail = () => {
     sendEmail({

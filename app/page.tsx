@@ -25,14 +25,14 @@ export default function Home() {
           />
         </div>
         <h1 className="text-3xl sm:text-4xl text-center sm:text-left font-bold">
-          Je veux servir à{" "}
+          Je veux devenir un(e){" "}
           <a
             className="text-indigo-700 hover:underline hover:underline-offset-4"
             href="#"
             target="_blank"
             rel="noopener noreferrer"
           >
-            ICC Au-RA
+            STAR
           </a>
         </h1>
         <ol className="list-inside list-decimal text-sm text-center sm:text-left">

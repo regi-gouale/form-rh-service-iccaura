@@ -40,3 +40,5 @@ jobs:
             git pull origin main
             git status
             pwd
+            docker compose pull
+            docker compose up --build -d
