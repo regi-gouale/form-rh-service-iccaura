@@ -27,7 +27,7 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const storedPerson = useStore.getState().personId;
-      
+
       if (storedPerson) {
         setPersonId(storedPerson);
       }
@@ -75,27 +75,28 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
           }
         }
       }
+    }
 
-      if (personId) {
-        try {
-          await fetch("/api/result", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              personId: personId,
-              scores: answersScore,
-            }),
-          });
-
-        } catch (err) {
-          console.error("Error saving response:", err);
-        }
-        router.push(`/results/${personId}`);
-      } else {
-        console.error("Person ID is not available");
+    if (personId) {
+      try {
+        await fetch("/api/result", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            personId: personId,
+            scores: answersScore,
+          }),
+        });
+      } catch (err) {
+        console.error("Error saving response:", err);
       }
+    } else {
+      console.error("Person ID is not available");
+    }
+    if (currentQuestionIndex === questions.length - 1) {
+      router.push(`/results/${personId}`);
     }
   };
 
