@@ -5,25 +5,11 @@ import { TScore } from "@/types";
 import { Person, Prisma, Result } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-// import {
-//   ChartConfig,
-//   // ChartContainer,
-//   // ChartTooltip,
-//   // ChartTooltipContent,
-// } from "@/components/ui/chart";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+
 import { Button } from "@/components/ui/button";
 import { sendEmail } from "@/lib/send-email";
-import { getMailMessageHtml } from "@/lib/utils";
-// import {
-//   Bar,
-//   BarChart,
-//   CartesianGrid,
-//   LabelList,
-//   XAxis,
-//   YAxis,
-// } from "recharts";
+import { getMailMessageHtml, getMailMessageText } from "@/lib/utils";
+
 import {
   kAGPDepartmentsIds,
   kDepartmentsScores,
@@ -91,24 +77,36 @@ const ShowResultsComponent = () => {
   }, [personId]);
 
   setTimeout(() => {
+    if (personId) {
+      onSendEmail();
+    }
+  }, 3000);
 
-  }, 1000);
+  const onBackHome = () => {
+    router.push("/");
+  };
 
-  const onBackAndSendEmail = () => {
+  const onSendEmail = () => {
     sendEmail({
       email: person!.email,
       name: `${person!.firstName} ${person!.lastName}`,
-      messageText: `\nBonjour ${
-        person!.firstName
-      },\n\nAprès analyse des informations fournies, il semblerait que les services les mieux adaptés à votre situation soit celui de la Filière ${getFieldName(
-        getFieldsAndDepartmentsRecommandations().firstRecommandation.field
-      )}. Plus précisément, il s'agirait du Département des ${getDepartmentName(
-        getFieldsAndDepartmentsRecommandations().firstRecommandation.department
-      )}. Ou bien celui de la filière ${getFieldName(
-        getFieldsAndDepartmentsRecommandations().secondRecommandation.field
-      )}, plus précisement le département : ${getDepartmentName(
-        getFieldsAndDepartmentsRecommandations().secondRecommandation.department
-      )} \nCes départements pourront répondre au mieux à vos besoins et vous apporter l'assistance nécessaire. N'hésitez pas à faire part de vos éventuelles questions ou préoccupations à l'équipe des ressources humaines.\n\nBien cordialement,\nÉglise Impact Centre Chrétien`,
+      messageText: getMailMessageText({
+        firstname: person!.firstName!,
+        field1: getFieldName(
+          getFieldsAndDepartmentsRecommandations().firstRecommandation.field
+        )!,
+        department1: getDepartmentName(
+          getFieldsAndDepartmentsRecommandations().firstRecommandation
+            .department
+        )!,
+        field2: getFieldName(
+          getFieldsAndDepartmentsRecommandations().secondRecommandation.field
+        )!,
+        department2: getDepartmentName(
+          getFieldsAndDepartmentsRecommandations().secondRecommandation
+            .department
+        )!,
+      }),
       messageHtml: getMailMessageHtml({
         firstname: person!.firstName!,
         field1: getFieldName(
@@ -127,7 +125,11 @@ const ShowResultsComponent = () => {
         )!,
       }),
     });
-    router.push("/");
+  };
+
+  const onSendEmailAndBackHome = () => {
+    // onSendEmail();
+    onBackHome();
   };
 
   const calculateScores = () => {
@@ -307,229 +309,99 @@ const ShowResultsComponent = () => {
     return { firstRecommandation, secondRecommandation };
   };
 
-  // const getChartFirstRecommandationData = () => {
-  //   const { firstRecommandation } = getFieldsAndDepartmentsRecommandations();
-  //   const fieldId = firstRecommandation.field;
-
-  //   const fieldDepartmentsScores = departmentsScoresOfField(fieldId);
-
-  //   const chartData = [];
-  //   for (const key in fieldDepartmentsScores) {
-  //     chartData.push({
-  //       department: key,
-  //       score: fieldDepartmentsScores[key].score,
-  //       fill: "#1a1e18",
-  //     });
-  //   }
-  //   return chartData;
-  // };
-
-  // const getChartFirstRecommandationConfig = () => {
-  //   const { firstRecommandation } = getFieldsAndDepartmentsRecommandations();
-  //   const fieldId = firstRecommandation.field;
-
-  //   const fieldDepartmentsScores = departmentsScoresOfField(fieldId);
-  //   const chartConfig = {} as ChartConfig;
-  //   for (const key in fieldDepartmentsScores) {
-  //     chartConfig[key] = {
-  //       label: key,
-  //       color: "#1a1e18",
-  //     };
-  //   }
-  //   return chartConfig;
-  // };
-
-  // const getChartSecondRecommandationData = () => {
-  //   const { secondRecommandation } = getFieldsAndDepartmentsRecommandations();
-  //   const fieldId = secondRecommandation.field;
-
-  //   const fieldDepartmentsScores = departmentsScoresOfField(fieldId);
-
-  //   const chartData = [];
-  //   for (const key in fieldDepartmentsScores) {
-  //     chartData.push({
-  //       department: key,
-  //       score: fieldDepartmentsScores[key].score,
-  //       fill: "#1a1e18",
-  //     });
-  //   }
-  //   return chartData;
-  // };
-
-  // const getChartSecondRecommandationConfig = () => {
-  //   const { secondRecommandation } = getFieldsAndDepartmentsRecommandations();
-  //   const fieldId = secondRecommandation.field;
-
-  //   const fieldDepartmentsScores = departmentsScoresOfField(fieldId);
-  //   const chartConfig = {} as ChartConfig;
-  //   for (const key in fieldDepartmentsScores) {
-  //     chartConfig[key] = {
-  //       label: key,
-  //       color: "#1a1e18",
-  //     };
-  //   }
-  //   return chartConfig;
-  // };
-
   return (
     <div className="flex w-full justify-center">
       <div className="max-w-3xl mx-8">
-        <h1 className="text-2xl sm:text-4xl text-center sm:text-justify font-semibold mb-6 sm:mb-8">
-          Proposition d&apos;Orientation pour le Service
+        <h1 className="text-2xl sm:text-4xl text-center font-semibold mb-6 sm:mb-8">
+          Félicitations <strong>{person?.firstName}</strong>! Tu as terminé ton
+          test d’orientation.
         </h1>
         <div className="flex justify-center mt-8">
           <Button
-            onClick={onBackAndSendEmail}
-            className="w-1/2 bg-purple-600 hover:bg-purple-800 mb-6"
+            onClick={onSendEmailAndBackHome}
+            className="w-1/2 bg-purple-600 hover:bg-purple-800 mb-6 rounded-full p-2"
           >
-            Envoyer par mail
+            Retour à l&apos;accueil
           </Button>
         </div>
-        <h2 className="text-xl sm:text-2xl mb-4 sm:mb-6">
-          Bonjour <strong>{person?.firstName}</strong>,
-        </h2>
-        <p className="mb-2 sm:mb-3 text-justify">
-          Après l&apos;analyse des réponses fournies, nous vous proposons les
-          récommandations suivantes:
+        <p className="text-lg md:text-xl mb-4 md:mb-6">
+          Au regard des réponses données, les départements qui correspondent à
+          ton profil relève de :{" "}
         </p>
-        <div className="grid grid-cols-1 gap-3 mb-6 sm:grid-cols-2 sm:gap-4">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-center text-xl font-extrabold">
-                1ère Récommandation
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Separator className="mb-4" />
-              <p className="text-center text-base sm:text-lg mb-4 sm:mb-6">
-                <span className="font-semibold">Filière</span> :{" "}
-                {getFieldName(
-                  getFieldsAndDepartmentsRecommandations().firstRecommandation
-                    .field
-                )}
-              </p>
-              <Separator className="mb-2" />
-              <p className="text-center text-base sm:text-lg mb-4 sm:mb-6">
-                <span className="font-semibold">Département</span> :{" "}
+        <ul className="list-inside mb-4 md:mb-6 space-y-2 flex flex-col">
+          <li className="text-lg md:text-xl flex">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              className="lucide lucide-chevron-right"
+            >
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+            <div className="flex">
+              la catégorie{" "}
+              <span className="font-semibold text-purple-600">
                 {getDepartmentName(
                   getFieldsAndDepartmentsRecommandations().firstRecommandation
                     .department
                 )}
-              </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-center text-xl font-extrabold">
-                2ème Récommandation
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <Separator className="mb-4" />
-              <p className="text-center text-base sm:text-lg mb-4 sm:mb-6">
-                <span className="font-semibold">Filière</span> :{" "}
+              </span>{" "}
+              au sein du département{" "}
+              <span className="font-semibold text-purple-600">
                 {getFieldName(
-                  getFieldsAndDepartmentsRecommandations().secondRecommandation
+                  getFieldsAndDepartmentsRecommandations().firstRecommandation
                     .field
                 )}
-              </p>
-              <Separator className="mb-2" />
-              <p className="text-center text-base sm:text-lg mb-4 sm:mb-6">
-                <span className="font-semibold">Département</span> :{" "}
+              </span>
+            </div>
+          </li>
+          <li className="text-lg md:text-xl flex">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              className="lucide lucide-chevron-right"
+            >
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+            <div className="flex">
+              la catégorie{" "}
+              <span className="font-semibold text-purple-600">
                 {getDepartmentName(
                   getFieldsAndDepartmentsRecommandations().secondRecommandation
                     .department
                 )}
-              </p>
-            </CardContent>
-          </Card>
-        </div>
-        {/* <div className="grid grid-cols-1 gap-6 md:gap-8 w-full justify-between">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-center text-lg">
-                Tendance par filière
-              </CardTitle>
-              <CardContent>
-                <Separator />
-                <ChartContainer config={getChartFirstRecommandationConfig()}>
-                  <BarChart
-                    accessibilityLayer
-                    layout="horizontal"
-                    margin={{ left: 1, right: 1 }}
-                    data={getChartFirstRecommandationData()}
-                  >
-                    <XAxis
-                      dataKey="field"
-                      type="category"
-                      tickLine={false}
-                      tickMargin={10}
-                    />
-                    <YAxis dataKey="score" type="number" hide />
-                    <Bar dataKey="score" fill="#8884d8" radius={4} />
-                  </BarChart>
-                </ChartContainer>
-              </CardContent>
-            </CardHeader>
-          </Card>
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-center text-base">
-                Filière{" "}
-                {/* {getFieldName(
-                  getFieldAndDepartmentIds()!.departmentId.split("_")[0]
-                )} */}
-        {/* </CardTitle>
-              <CardContent>
-                <Separator />
-                <ChartContainer config={getChartSecondRecommandationConfig()}>
-                  <BarChart
-                    accessibilityLayer
-                    layout="vertical"
-                    margin={{ left: 1, right: 16 }}
-                    data={getChartSecondRecommandationData()}
-                  >
-                    <CartesianGrid horizontal={false} />
-                    <YAxis
-                      dataKey="department"
-                      type="category"
-                      tickLine={false}
-                      tickMargin={1}
-                      axisLine={false}
-                      tick={{ fill: "var(--color-label)", fontSize: "60%" }}
-                      tickFormatter={(value) =>
-                        getDepartmentName(value)!
-                          .split(" ")[0]
-                          .split(",")[0]
-                          .toUpperCase()
-                      }
-                      
-                    />
-                    <XAxis dataKey="score" type="number" hide />
-                    <ChartTooltip
-                      cursor={false}
-                      content={<ChartTooltipContent indicator="line" />}
-                    />
-                    <Bar dataKey="score" fill="#8884d8" radius={4}> */}
-        {/* <LabelList
-                        dataKey="department"
-                        position="insideLeft"
-                        offset={8}
-                        className="fill-[--color-label]"
-                      /> */}
-        {/* <LabelList
-                        dataKey="score"
-                        position="right"
-                        offset={2}
-                        className="fill-[--color-label]"
-                      />
-                    </Bar>
-                  </BarChart>
-                </ChartContainer>
-              </CardContent>
-            </CardHeader>
-          </Card>
-        </div> */}
+              </span>{" "}
+              au sein du département{" "}
+              <span className="font-semibold text-purple-600">
+                {getFieldName(
+                  getFieldsAndDepartmentsRecommandations().secondRecommandation
+                    .field
+                )}
+              </span>
+            </div>
+          </li>
+        </ul>
+        <p className="text-lg md:text-xl text-justify mb-4 md:mb-6">
+          Tu seras contacté(e) par les Ressources Humaines pour un entretien.
+          Les RH te présenteront de manière détaillée les différents
+          départements en lien avec ton profil, répondront à tes questions, et
+          te communiqueront toutes les informations nécessaires à ton
+          intégration dans le service.
+        </p>
+        <p className="text-lg md:text-xl text-right">Soit béni(e)</p>
       </div>
     </div>
   );

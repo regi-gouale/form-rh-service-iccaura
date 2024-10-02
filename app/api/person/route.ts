@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 const prisma = new PrismaClient();
 
 export async function POST(request: Request) {
-  const { firstName, lastName, email, churchId } = await request.json();
+  const { firstName, lastName, email, churchId, profession, lastGradeCompleted } = await request.json();
 
   try {
     const existingPerson = await prisma.person.findUnique({
@@ -21,6 +21,8 @@ export async function POST(request: Request) {
           firstName: firstName,
           lastName: lastName,
           churchId: churchId,
+          profession: profession,
+          lastGradeCompleted: lastGradeCompleted,
         },
       });
       return NextResponse.json(updatedPerson, { status: 200 });
@@ -32,6 +34,8 @@ export async function POST(request: Request) {
         lastName: lastName,
         email: email,
         churchId: churchId,
+        profession: profession,
+        lastGradeCompleted: lastGradeCompleted,
       },
     });
     return NextResponse.json(newPerson, { status: 201 });

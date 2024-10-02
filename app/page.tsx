@@ -14,17 +14,17 @@ export default function Home() {
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <div className="w-full flex justify-center justify-items-center p-8">
+      <main className="flex flex-col gap-8 row-start-2 items-center">
+        <div className="w-full flex justify-center justify-items-center">
           <Image
             src="/imgDirectionAdmin.jpeg"
             alt="Direction Administrative ICC Lyon"
-            width={200}
-            height={200}
-            className="rounded-lg"
+            width={100}
+            height={100}
+            className="rounded-3xl"
           />
         </div>
-        <h1 className="text-3xl sm:text-4xl text-center sm:text-left font-bold">
+        <h1 className="text-2xl md:text-3xl text-center font-bold">
           Je veux devenir un(e){" "}
           <a
             className="text-indigo-700 hover:underline hover:underline-offset-4"
@@ -35,23 +35,31 @@ export default function Home() {
             STAR
           </a>
         </h1>
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left">
-          <li className="mb-2">Je lance le questionnaire.</li>
-          <li className="mb-2">
-            Je sélectionne les réponses qui me correspondent le mieux.
-          </li>
-          <li className="mb-2">
-            J&apos;identifie le département et le ministère.
-          </li>
-          <li>J&apos;en discute avec les ressources humaines.</li>
-        </ol>
+        <section className="text-base text-justify md:text-lg">
+          <p className="mb-2 md:mb-4">
+            Bienvenue sur le formulaire d’orientation pour découvrir le
+            département dans lequel vous servirez le Seigneur de manière
+            épanouie, excellente et productive.
+          </p>
+          <p className="mb-2 md:mb-4">
+            Le questionnaire consiste à mettre en évidence vos grâces, vos
+            aptitudes, vos compétences, vos passions afin de vous orienter dans
+            le bon service.
+          </p>
+          <p className="mb-2 md:mb-4">
+            Il n’est pas exhaustif. C’est un canevas d’orientation.
+          </p>
+          <p className="mb-2 md:mb-4">
+            Il est recommandé de répondre aux questions de manière spontanée.
+          </p>
+        </section>
 
         <div className="flex gap-4 items-center justify-center w-full flex-col sm:flex-row">
           <Button
             onClick={handleButtonServeClick}
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44 dark:hover:text-black"
+            className="rounded-full border border-solid border-indigo-700/[.08] bg-indigo-700 transition-colors flex items-center justify-center hover:bg-indigo-500 hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44 font-semibold"
           >
-            Je veux servir
+            À vous de jouer !
           </Button>
         </div>
       </main>

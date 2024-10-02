@@ -9,4 +9,6 @@ export const QIdFormSchema = z.object({
     .min(2, { message: "Le nom doit contenir au moins 2 caractères" }),
   email: z.string().email({ message: "L'email doit être valide" }),
   church: z.string({ required_error: "L'église est requise" }),
+  profession: z.string(),
+  lastGradeCompleted: z.string(),
 });

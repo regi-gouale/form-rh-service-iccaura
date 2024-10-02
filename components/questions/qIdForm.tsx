@@ -58,6 +58,8 @@ const QIdForm = () => {
       lastName: "",
       email: "",
       church: "",
+      profession: "",
+      lastGradeCompleted: "",
     },
   });
 
@@ -73,6 +75,8 @@ const QIdForm = () => {
           lastName: data.lastName,
           email: data.email,
           churchId: data.church,
+          profession: data.profession,
+          lastGradeCompleted: data.lastGradeCompleted,
         }),
       });
       if (response.ok) {
@@ -108,8 +112,8 @@ const QIdForm = () => {
                       <FormItem>
                         <FormControl>
                           <Input
-                            className="rounded-full border border-solid border-black/[.08] dark:border-white/[0.145] transition-colors text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44 dark:hover:text-black"
-                            placeholder="Mon Prénom"
+                            className="rounded-full border border-solid border-black/[.08] transition-colors text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
+                            placeholder="Prénom"
                             {...field}
                           />
                         </FormControl>
@@ -124,8 +128,8 @@ const QIdForm = () => {
                       <FormItem>
                         <FormControl>
                           <Input
-                            className="rounded-full border border-solid border-black/[.08] dark:border-white/[0.145] transition-colors text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44 dark:hover:text-black"
-                            placeholder="Mon Nom"
+                            className="rounded-full border border-solid border-black/[.08] transition-colors text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
+                            placeholder="Nom"
                             {...field}
                           />
                         </FormControl>
@@ -142,8 +146,44 @@ const QIdForm = () => {
                       <FormItem>
                         <FormControl>
                           <Input
-                            className="rounded-full border border-solid border-black/[.08] dark:border-white/[0.145] transition-colors text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44 dark:hover:text-black"
-                            placeholder="Mon adresse email"
+                            className="rounded-full border border-solid border-black/[.08] transition-colors text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
+                            placeholder="Adresse Mail"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <div className="w-full justify-evenly gap-4 sm:gap-5 mb-4 sm:mb-5">
+                  <FormField
+                    control={form.control}
+                    name="profession"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input
+                            className="rounded-full border border-solid border-black/[.08] transition-colors text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
+                            placeholder="Profession"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <div className="w-full justify-evenly gap-4 sm:gap-5 mb-4 sm:mb-5">
+                  <FormField
+                    control={form.control}
+                    name="lastGradeCompleted"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input
+                            className="rounded-full border border-solid border-black/[.08] transition-colors text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
+                            placeholder="Dernier diplôme obtenu"
                             {...field}
                           />
                         </FormControl>
@@ -164,7 +204,7 @@ const QIdForm = () => {
                           required
                         >
                           <FormControl>
-                            <SelectTrigger className="rounded-full border border-solid border-black/[.08] dark:border-white/[0.145] transition-colors text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44 dark:hover:text-black">
+                            <SelectTrigger className="rounded-full border border-solid border-black/[.08]  transition-colors text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44">
                               <SelectValue placeholder="Choisir mon église" />
                             </SelectTrigger>
                           </FormControl>
@@ -182,10 +222,10 @@ const QIdForm = () => {
                   />
                 </div>
                 <Button
-                  className="rounded-full border border-solid border-black/[.08] dark:border-white/[0.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44 dark:hover:text-black"
+                  className="rounded-full border border-solid border-indigo-700/[.08] bg-indigo-700 transition-colors flex items-center justify-center hover:bg-indigo-500 font-semibold hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
                   type="submit"
                 >
-                  Je commence
+                  Commencer le questionnaire
                 </Button>
               </div>
             </form>

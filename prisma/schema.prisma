@@ -18,6 +18,8 @@ model Person {
   email     String   @unique
   firstName String
   lastName  String
+  profession String?
+  lastGradeCompleted String?
   churchId  String? // Add the churchId field
   church    Church?  @relation(fields: [churchId], references: [id])
   createdAt DateTime @default(now())
