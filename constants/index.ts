@@ -74,30 +74,30 @@ export const kChurches = [
 export const kFieldsScores: { [key: string]: TScore } = {
   AGP: {
     score: 0,
-    totalQuestions: 50,
+    totalQuestions: 10,
   },
   EAS: {
     score: 0,
-    totalQuestions: 49,
+    totalQuestions: 10,
   },
   SBE: {
     score: 0,
-    totalQuestions: 51,
+    totalQuestions: 12,
   },
   MIC: {
     score: 0,
-    totalQuestions: 50,
+    totalQuestions: 9,
   },
   RT: {
     score: 0,
-    totalQuestions: 49,
+    totalQuestions: 8,
   },
 };
 
 export const kDepartmentsScores: { [key: string]: TScore } = {
   AGP_1: {
     score: 0,
-    totalQuestions: 4,
+    totalQuestions: 3,
   },
   AGP_2: {
     score: 0,
@@ -105,11 +105,11 @@ export const kDepartmentsScores: { [key: string]: TScore } = {
   },
   AGP_3: {
     score: 0,
-    totalQuestions: 3,
+    totalQuestions: 2,
   },
   AGP_4: {
     score: 0,
-    totalQuestions: 4,
+    totalQuestions: 3,
   },
   AGP_5: {
     score: 0,
@@ -121,7 +121,7 @@ export const kDepartmentsScores: { [key: string]: TScore } = {
   },
   AGP_7: {
     score: 0,
-    totalQuestions: 6,
+    totalQuestions: 7,
   },
   AGP_8: {
     score: 0,
@@ -129,7 +129,7 @@ export const kDepartmentsScores: { [key: string]: TScore } = {
   },
   AGP_9: {
     score: 0,
-    totalQuestions: 3,
+    totalQuestions: 2,
   },
   AGP_10: {
     score: 0,
@@ -141,43 +141,43 @@ export const kDepartmentsScores: { [key: string]: TScore } = {
   },
   EAS_1: {
     score: 0,
-    totalQuestions: 7,
+    totalQuestions: 6,
   },
   EAS_2: {
     score: 0,
-    totalQuestions: 5,
+    totalQuestions: 8,
   },
   EAS_3: {
     score: 0,
-    totalQuestions: 8,
+    totalQuestions: 2,
   },
   EAS_4: {
     score: 0,
-    totalQuestions: 1,
+    totalQuestions: 2,
   },
   SBE_1: {
     score: 0,
-    totalQuestions: 7,
+    totalQuestions: 4,
   },
   SBE_2: {
     score: 0,
-    totalQuestions: 7,
+    totalQuestions: 4,
   },
   SBE_3: {
     score: 0,
-    totalQuestions: 7,
+    totalQuestions: 4,
   },
   MIC_1: {
     score: 0,
-    totalQuestions: 7,
+    totalQuestions: 3,
   },
   MIC_2: {
     score: 0,
-    totalQuestions: 7,
+    totalQuestions: 2,
   },
   MIC_3: {
     score: 0,
-    totalQuestions: 7,
+    totalQuestions: 4,
   },
   RT_1: {
     score: 0,

@@ -127,11 +127,6 @@ const ShowResultsComponent = () => {
     });
   };
 
-  const onSendEmailAndBackHome = () => {
-    // onSendEmail();
-    onBackHome();
-  };
-
   const calculateScores = () => {
     const fieldsScores: { [key: string]: TScore } = kFieldsScores;
 
@@ -318,7 +313,7 @@ const ShowResultsComponent = () => {
         </h1>
         <div className="flex justify-center mt-8">
           <Button
-            onClick={onSendEmailAndBackHome}
+            onClick={onBackHome}
             className="w-1/2 bg-purple-600 hover:bg-purple-800 mb-6 rounded-full p-2"
           >
             Retour à l&apos;accueil
@@ -337,14 +332,14 @@ const ShowResultsComponent = () => {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="lucide lucide-chevron-right"
             >
               <path d="m9 18 6-6-6-6" />
             </svg>
-            <div className="flex">
+            <div className="">
               la catégorie{" "}
               <span className="font-semibold text-purple-600">
                 {getDepartmentName(
@@ -369,14 +364,14 @@ const ShowResultsComponent = () => {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="lucide lucide-chevron-right"
             >
               <path d="m9 18 6-6-6-6" />
             </svg>
-            <div className="flex">
+            <div className="">
               la catégorie{" "}
               <span className="font-semibold text-purple-600">
                 {getDepartmentName(
