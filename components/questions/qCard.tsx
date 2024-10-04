@@ -23,6 +23,9 @@ const answersScore: { [key: string]: number } = kAnswersScore;
 const QCardComponent = ({ questions }: QCardComponentProps) => {
   const router = useRouter();
   const [personId, setPersonId] = useState<string | null>(null);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -34,49 +37,7 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
     }
   }, []);
 
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [progress, setProgress] = useState(0);
-
-  const handleNextQuestion = async (answer: string) => {
-    if (currentQuestionIndex === 0) {
-      Object.keys(answersScore).forEach((key) => {
-        answersScore[key] = 0;
-      });
-    }
-
-    setProgress(((currentQuestionIndex + 1) / questions.length) * 100);
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-
-      for (let i = 0; i < questions[currentQuestionIndex].answers.length; i++) {
-        if (questions[currentQuestionIndex].answers[i].answer === answer) {
-          for (
-            let j = 0;
-            j < questions[currentQuestionIndex].answers[i].categories.length;
-            j++
-          ) {
-            answersScore[
-              questions[currentQuestionIndex].answers[i].categories[j]
-            ] += 1;
-          }
-        }
-      }
-    } else {
-      for (let i = 0; i < questions[currentQuestionIndex].answers.length; i++) {
-        if (questions[currentQuestionIndex].answers[i].answer === answer) {
-          for (
-            let j = 0;
-            j < questions[currentQuestionIndex].answers[i].categories.length;
-            j++
-          ) {
-            answersScore[
-              questions[currentQuestionIndex].answers[i].categories[j]
-            ] += 1;
-          }
-        }
-      }
-    }
-
+  const saveResponse = async () => {
     if (personId) {
       try {
         await fetch("/api/result", {
@@ -100,6 +61,52 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
     }
   };
 
+  const handleNextQuestion = async () => {
+    if (selectedAnswer === null) return;
+
+    if (currentQuestionIndex === 0) {
+      Object.keys(answersScore).forEach((key) => {
+        answersScore[key] = 0;
+      });
+    }
+
+    setProgress(((currentQuestionIndex + 1) / questions.length) * 100);
+    if (currentQuestionIndex < questions.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+
+      for (let i = 0; i < questions[currentQuestionIndex].answers.length; i++) {
+        if (questions[currentQuestionIndex].answers[i].answer === selectedAnswer) {
+          for (
+            let j = 0;
+            j < questions[currentQuestionIndex].answers[i].categories.length;
+            j++
+          ) {
+            answersScore[
+              questions[currentQuestionIndex].answers[i].categories[j]
+            ] += 1;
+          }
+        }
+      }
+      setSelectedAnswer(null);
+    } else {
+      for (let i = 0; i < questions[currentQuestionIndex].answers.length; i++) {
+        if (questions[currentQuestionIndex].answers[i].answer === selectedAnswer) {
+          for (
+            let j = 0;
+            j < questions[currentQuestionIndex].answers[i].categories.length;
+            j++
+          ) {
+            answersScore[
+              questions[currentQuestionIndex].answers[i].categories[j]
+            ] += 1;
+          }
+        }
+      }
+
+      await saveResponse();
+    }
+  };
+
   const handleQuit = () => {
     router.push("/");
   };
@@ -112,13 +119,16 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
       <div className="max-w-3xl mx-8">
         <Card className="w-full p-3 space-y-3">
           <CardHeader>
-            <Progress value={progress} />
-            <CardTitle className="text-lg sm:text-2xl md:text-3xl text-justify">
+            <Progress
+              value={progress}
+              className="[&>*]:bg-indigo-400 bg-indigo-100"
+            />
+            <CardTitle className="text-lg sm:text-2xl md:text-3xl text-center">
               {questions[currentQuestionIndex].question}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <RadioGroup onValueChange={(value) => handleNextQuestion(value)}>
+            <RadioGroup onValueChange={(value) => setSelectedAnswer(value)}>
               {questions[currentQuestionIndex].answers.map((answer) => (
                 <div key={answer.answer} className="flex items-center gap-3">
                   <RadioGroupItem
@@ -128,7 +138,7 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
                   />
                   <Label
                     htmlFor={answer.answer}
-                    className="flex items-center justify-between w-full my-2 px-4 py-3 text-sm sm:text-base font-medium rounded-xl cursor-pointer bg-muted hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:bg-primary peer-data-[state=checked]:text-primary-foreground text-justify"
+                    className="flex items-center justify-between w-full my-2 px-4 py-3 text-sm sm:text-base font-medium rounded-xl cursor-pointer bg-muted hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:bg-indigo-400 peer-data-[state=checked]:text-white text-justify"
                   >
                     {answer.answer}
                   </Label>
@@ -136,13 +146,19 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
               ))}
             </RadioGroup>
           </CardContent>
-          <CardFooter className="flex justify-center">
+          <CardFooter className="flex justify-between">
             <Button
-              className="rounded-full border border-solid border-black/[.08] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
+              className="rounded-full border border-solid border-black/[.08] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44 font-semibold"
               variant={"destructive"}
               onClick={handleQuit}
             >
               Quitter
+            </Button>
+            <Button
+              className="rounded-full border border-solid border-indigo-400 transition-colors flex items-center bg-indigo-700 justify-center hover:bg-indigo-800 hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44 font-semibold"
+              onClick={handleNextQuestion}
+            >
+              Question suivante
             </Button>
           </CardFooter>
         </Card>
