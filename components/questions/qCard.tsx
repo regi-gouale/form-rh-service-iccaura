@@ -25,7 +25,7 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
   const [personId, setPersonId] = useState<string | null>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [progress, setProgress] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const [selectedAnswer, setSelectedAnswer] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -62,7 +62,7 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
   };
 
   const handleNextQuestion = async () => {
-    if (selectedAnswer === null) return;
+    if (selectedAnswer === undefined) return;
 
     if (currentQuestionIndex === 0) {
       Object.keys(answersScore).forEach((key) => {
@@ -75,7 +75,9 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
 
       for (let i = 0; i < questions[currentQuestionIndex].answers.length; i++) {
-        if (questions[currentQuestionIndex].answers[i].answer === selectedAnswer) {
+        if (
+          questions[currentQuestionIndex].answers[i].answer === selectedAnswer
+        ) {
           for (
             let j = 0;
             j < questions[currentQuestionIndex].answers[i].categories.length;
@@ -87,10 +89,11 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
           }
         }
       }
-      setSelectedAnswer(null);
     } else {
       for (let i = 0; i < questions[currentQuestionIndex].answers.length; i++) {
-        if (questions[currentQuestionIndex].answers[i].answer === selectedAnswer) {
+        if (
+          questions[currentQuestionIndex].answers[i].answer === selectedAnswer
+        ) {
           for (
             let j = 0;
             j < questions[currentQuestionIndex].answers[i].categories.length;
@@ -105,6 +108,7 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
 
       await saveResponse();
     }
+    setSelectedAnswer(undefined);
   };
 
   const handleQuit = () => {
@@ -128,7 +132,7 @@ const QCardComponent = ({ questions }: QCardComponentProps) => {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <RadioGroup onValueChange={(value) => setSelectedAnswer(value)}>
+            <RadioGroup value={selectedAnswer} onValueChange={(value) => setSelectedAnswer(value)}>
               {questions[currentQuestionIndex].answers.map((answer) => (
                 <div key={answer.answer} className="flex items-center gap-3">
                   <RadioGroupItem
